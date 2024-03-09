@@ -1,0 +1,43 @@
+.card{
+    background-color: bisque;
+    padding: 10px;
+    min-width:100px;
+  }
+  .outer{
+    display:flex;
+    flex-wrap: wrap;
+  }
+  
+  .square{
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border:solid 1px black;
+    flex: 0 0 20%;
+    position: relative;
+  }
+  .square img {
+    /* 画像のスタイル */
+    max-width: 100%; /* 画像の最大幅をマスの幅に合わせる */
+    max-height: 100%; /* 画像の最大高さをマスの高さに合わせる */
+    display: block; /* インライン要素をブロック要素に変更 */
+    margin: auto; /* 画像を中央に配置 */
+  }
+  .outer .gray{
+    background-color: rgb(48, 183, 255);
+  }
+  
+  .square::before{
+    content: '';
+    display: block;
+    padding-top:100%;
+  }
+  .square div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
