@@ -6,40 +6,71 @@ function shuffleArray(array) {
     }
 }
 function checkBingo() {
+    bingoAchieved = false;
+    squaresInColumn = [];
     // 各列についてビンゴが成立しているかチェック
+    console.log('列');
     for (let col = 0; col < COLUMN_LENGTH; col++) {
-        let bingoInColumn = true; // 列のビンゴ成立フラグ
-        for (let row = 0; row < ROW_LENGTH; row++) {
-            let cell = document.querySelector(`.square:nth-child(${ROW_LENGTH}n + ${col + 1})`);
-            if (!cell.classList.contains('gray')) {
-                bingoInColumn = false;
-                break;
-            }
-        }
-        if (bingoInColumn) {
-            // ビンゴが成立した列に対してアニメーションを開始する処理をここに記述
-            //console.log(`Bingo in column ${col + 1}`);
-            bingoAchieved = true; // ビンゴ成立フラグを立てる
-        }
-    }
-
+        let count = 0;
+        const cells = document.querySelectorAll(`.square:nth-child(n + ${col * ROW_LENGTH + 1}):nth-child(-n + ${col * ROW_LENGTH + 3})`);//行の要素を取得。2つのnth-childを使って3つの要素を取得。
+        //console.log(cells)
+        //const numberOfCells = cells.length;//要素の数を取得。
+        //console.log(numberOfCells);
+        for (let i = 0; i < cells.length; i++) {
+            // 各セルに対する処理を記述する
+            //console.log(cells[i]); // 例: 各セルの内容をコンソールに出力する
+            if (cells[i].classList.contains('gray')) {
+                count += 1;
+                if (count==COLUMN_LENGTH){
+                    bingoAchieved = true; // ビンゴ成立フラグを立てる
+                    squaresInColumn = cells;
+                    break;
+                };
+            };
+        };
+    };
     // 各行についてビンゴが成立しているかチェック
+    console.log('行');
     for (let row = 0; row < ROW_LENGTH; row++) {
-        let bingoInRow = true; // 行のビンゴ成立フラグ
-        for (let col = 0; col < COLUMN_LENGTH; col++) {
-            let cell = document.querySelector(`.square:nth-child(${ROW_LENGTH}n + ${col + 1})`);
-            if (!cell.classList.contains('gray')) {
-                bingoInRow = false;
-                break;
-            }
+        let count = 0;
+        const cells = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH}n + ${row + 1})`);//行の要素を取得。
+        for (let i = 0; i < cells.length; i++) {
+            if (cells[i].classList.contains('gray')) {
+                count += 1;
+                if (count==COLUMN_LENGTH){
+                    bingoAchieved = true; // ビンゴ成立フラグを立てる
+                    squaresInColumn = cells;
+                    break;
+                };
+            };
+        };
+    }; 
+    //斜めにビンゴが成立しているかチェック
+    console.log('斜め');
+    for (let i = 1; i < 3; i++) {
+        let count = 0;
+        console.log(i)
+        let cells = [];
+        if (i==1){
+            cells = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH + 1}n + 1)`);//行の要素を取得。
         }
-        if (bingoInRow) {
-            // ビンゴが成立した行に対してアニメーションを開始する処理をここに記述
-            console.log(`Bingo in row ${row + 1}`);
-            bingoAchieved = true; // ビンゴ成立フラグを立てる
+        else{
+            cells = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH - 1}n + 3)`);//行の要素を取得。
         }
-    }
-}
+        console.log(cells)
+        for (let i = 0; i < 3; i++) {
+            if (cells[i].classList.contains('gray')) {
+                count += 1;
+                if (count==COLUMN_LENGTH){
+                    bingoAchieved = true; // ビンゴ成立フラグを立てる
+                    squaresInColumn = Array.from(cells).slice(0,3);//右肩上がりの斜めは4つ目のcellが取得されるので、それを除くため。
+                    break;
+                };
+            };
+        };
+    }; 
+
+};
 
 
 const COLUMN_LENGTH = 3;
@@ -60,6 +91,7 @@ for(let i = 1; i <= MAX_NUMBER; i++){
 let outer = document.getElementById('outer');
 // アニメーションを開始するためのフラグ
 let bingoAchieved = false;
+let squaresInColumn = [];
 // 先頭から25個の動物を使ってビンゴカードを作成する
 for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){
     let divSquare = document.createElement('div');//セルのdiv要素作成。
@@ -79,14 +111,18 @@ for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){
 
     // ビンゴが成立したときに、その列の動物を回転させて大きくする
     divSquare.addEventListener('click', () => {
-        let columnNumber = Math.floor((i - 1) / ROW_LENGTH); // クリックされたセルが所属する列の番号。floor()は切り捨てて整数に変換する関数。
-        let squaresInColumn = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH}n + ${columnNumber + 1})`);
-        squaresInColumn.forEach(square => {
-            let animalImg = square.querySelector('img'); // 動物のimg要素を取得
-            console.log(bingoAchieved)
-            checkBingo();
-            console.log(bingoAchieved)
-            if (bingoAchieved) {
+        //let columnNumber = Math.floor((i - 1) / ROW_LENGTH); // クリックされたセルが所属する列の番号。floor()は切り捨てて整数に変換する関数。
+        //let squaresInColumn = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH}n + ${columnNumber + 1})`);
+        console.log(bingoAchieved)
+        checkBingo();
+        console.log(bingoAchieved)
+        if (bingoAchieved) {
+            squaresInColumn.forEach(square => {
+                let animalImg = square.querySelector('img'); // 動物のimg要素を取得
+                //console.log(bingoAchieved)
+                //checkBingo();
+                //console.log(bingoAchieved)
+                //if (bingoAchieved) {
                 
                 animalImg.animate(
                     // 途中の状態を表す配列
@@ -100,15 +136,17 @@ for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){
                         duration: 2000, // 再生時間（1000ミリ秒）
                     },
                 );
-            }; 
+            }
+            )
+        };
             //animalImg.style.transform = 'scale(1.2) rotate(90deg) rotate(180deg) rotate(360deg)'; // 動物だけを拡大して回転する
             //setTimeout(() => {
                 //animalImg.style.transform = 'none'; // 元に戻す
             //}, 1000); // 1秒後に元に戻す
-        });
+        //});
     });
     
 }
 
 $('.square').css('flex', `0 0 ${squareWidth}%`);
-console.log(squareWidth);
+//console.log(squareWidth);
