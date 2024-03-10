@@ -14,11 +14,12 @@
     border:solid 1px black;
     flex: 0 0 20%;
     position: relative;
+    
   }
   .square img {
     /* 画像のスタイル */
-    max-width: 100%; /* 画像の最大幅をマスの幅に合わせる */
-    max-height: 100%; /* 画像の最大高さをマスの高さに合わせる */
+    max-width: 80%; /* 画像の最大幅をマスの幅に合わせる */
+    max-height: 80%; /* 画像の最大高さをマスの高さに合わせる */
     display: block; /* インライン要素をブロック要素に変更 */
     margin: auto; /* 画像を中央に配置 */
   }
