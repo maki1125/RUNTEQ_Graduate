@@ -1,3 +1,5 @@
+//参考url
+//https://magazine.techacademy.jp/magazine/32634
 // Fisher-Yates シャッフルアルゴリズムを使って配列をシャッフルする関数
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -8,6 +10,10 @@ function shuffleArray(array) {
 function checkBingo() {
     bingoAchieved = false;
     squaresInColumn = [];
+    squaresInColumn1 = [];
+    squaresInColumn2 = [];
+    squaresInColumn3 = [];
+    squaresInColumn4 = [];
     // 各列についてビンゴが成立しているかチェック
     console.log('列');
     for (let col = 0; col < COLUMN_LENGTH; col++) {
@@ -23,7 +29,7 @@ function checkBingo() {
                 count += 1;
                 if (count==COLUMN_LENGTH){
                     bingoAchieved = true; // ビンゴ成立フラグを立てる
-                    squaresInColumn = cells;
+                    squaresInColumn1 = cells;
                     break;
                 };
             };
@@ -39,36 +45,49 @@ function checkBingo() {
                 count += 1;
                 if (count==COLUMN_LENGTH){
                     bingoAchieved = true; // ビンゴ成立フラグを立てる
-                    squaresInColumn = cells;
+                    squaresInColumn2 = cells;
                     break;
                 };
             };
         };
     }; 
-    //斜めにビンゴが成立しているかチェック
+    //左斜めにビンゴが成立しているかチェック
     console.log('斜め');
-    for (let i = 1; i < 3; i++) {
-        let count = 0;
-        console.log(i)
-        let cells = [];
-        if (i==1){
-            cells = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH + 1}n + 1)`);//行の要素を取得。
-        }
-        else{
-            cells = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH - 1}n + 3)`);//行の要素を取得。
-        }
-        console.log(cells)
-        for (let i = 0; i < 3; i++) {
-            if (cells[i].classList.contains('gray')) {
-                count += 1;
-                if (count==COLUMN_LENGTH){
-                    bingoAchieved = true; // ビンゴ成立フラグを立てる
-                    squaresInColumn = Array.from(cells).slice(0,3);//右肩上がりの斜めは4つ目のcellが取得されるので、それを除くため。
-                    break;
-                };
+    let count = 0;
+    let cells = [];
+    cells = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH + 1}n + 1)`);//行の要素を取得。
+    console.log(cells)
+    for (let i = 0; i < 3; i++) {
+        if (cells[i].classList.contains('gray')) {
+            count += 1;
+            if (count==COLUMN_LENGTH){
+                bingoAchieved = true; // ビンゴ成立フラグを立てる
+                squaresInColumn3 = Array.from(cells).slice(0,3);//右肩上がりの斜めは4つ目のcellが取得されるので、それを除くため。
+                break;
             };
         };
-    }; 
+    };
+
+    //右斜めにビンゴが成立しているかチェック
+    console.log('斜め');
+    count = 0;
+    cells = [];
+    cells = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH - 1}n + 3)`);//行の要素を取得。
+    console.log(cells)
+    for (let i = 0; i < 3; i++) {
+        if (cells[i].classList.contains('gray')) {
+            count += 1;
+            if (count==COLUMN_LENGTH){
+                bingoAchieved = true; // ビンゴ成立フラグを立てる
+                squaresInColumn4 = Array.from(cells).slice(0,3);//右肩上がりの斜めは4つ目のcellが取得されるので、それを除くため。
+                break;
+            };
+        };
+    };
+
+    
+    squaresInColumn = Array.from(squaresInColumn1).concat(Array.from(squaresInColumn2), Array.from(squaresInColumn3), Array.from(squaresInColumn4));
+    console.log(squaresInColumn)
 
 };
 
