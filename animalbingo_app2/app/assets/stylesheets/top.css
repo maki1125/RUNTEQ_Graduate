@@ -20,6 +20,13 @@
       }
     }
     .top-inner-text p{
-      font-size: 5px;
+      font-size: 10px;
     }
+  }
+  .header {
+    background-color: rgb(232, 226, 226);
+  }
+
+  .footer {
+    background-color: rgb(232, 226, 226);
   }
