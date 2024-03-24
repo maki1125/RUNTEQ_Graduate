@@ -1,0 +1,131 @@
+@charset "utf-8";
+/*ルーレット*/
+body {
+    font-family: arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('img/bg_chiheisen_green.jpg'); /* 画像のパスを指定 */
+    background-size: cover; /* 画像を背景にフィットさせる */
+    background-position: center; /* 画像を中央に配置 */
+}
+.roulette {
+    flex: 1;
+    text-align: center;
+    align-self: flex-end; /* 下揃えに設定 */
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.centering {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* ルーレット */
+.result {
+    margin-top: 20px; 
+    font-size: 70px;
+
+    width: 130px;
+    height: 130px;
+}
+
+/* 出た数字の一覧 */
+.number {
+    color: #B78D4A;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 auto;
+    list-style: none;
+    width: 80%;
+    padding: 0;
+}
+
+.number li {
+    background-color: #B78D4A;
+    color: #fff;
+    border-radius: 10px;
+    height: 40px;
+    margin: 4px;
+    width: 40px;
+}
+
+/* ボタン */
+.wrapper-button {
+    padding: 20px 0;
+}
+
+.button {
+    font-size: 30px;
+    display: inline-block;
+    padding: .8rem 1.6rem;
+    border: none;
+    border-radius: 25px;
+    color: #FFF;
+    background-color: green;
+
+}
+/*ビンゴカード*/
+.bingo {
+    flex: 2;
+    text-align: center;
+  }
+  .card{
+      background-color: bisque;
+      padding: 10px;
+      min-width:100px;
+    }
+    .outer{
+      display:flex;
+      flex-wrap: wrap;
+    }
+    
+    .square{
+      box-sizing: border-box;
+      background-color: #ffffff;
+      border:solid 1px black;
+      flex: 0 0 20%;
+      position: relative;
+      
+    }
+    .square img {
+      /* 画像のスタイル */
+      max-width: 80%; /* 画像の最大幅をマスの幅に合わせる */
+      max-height: 80%; /* 画像の最大高さをマスの高さに合わせる */
+      display: block; /* インライン要素をブロック要素に変更 */
+      margin: auto; /* 画像を中央に配置 */
+    }
+    .outer .gray{
+      background-color: rgb(48, 183, 255);
+    }
+    
+    .square::before{
+      content: '';
+      display: block;
+      padding-top:100%;
+    }
+    .square div{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Bingo and Roulette</title>
+    <link href="bingo_ruret.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="bingo">
+            <!-- ビンゴカード -->
+            <div class="card">
+                BINGOカード<br>
+                クリックするとチェックできます。
+                <div class="outer"  id="outer">
+                </div>
+            </div>
+        </div>
+        <div class="roulette">
+            <!-- ルーレット -->
+            <img id="result" class="result centering" src="img/animal/1.png" alt="result image">
+            <div class="wrapper-button">
+                <button id="button" class="button">START</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="bingo.js"></script>
+    <script src="ruret.js"></script>
+</body>
+</html>
