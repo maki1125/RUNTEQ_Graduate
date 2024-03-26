@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ビンゴ</title>
+    <link href="../../assets/stylesheets/bingo_ruret.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="bingo">
+            <!-- ビンゴカード -->
+            <div class="card">
+                <div class="comment">コメント
+                </div>
+                <div class="outer"  id="outer">
+                </div>
+            </div>
+        </div>
+        <div class="roulette">
+            <!-- ルーレット -->
+            <%= image_tag 'animal/1.png', size: '40x40',id: "result", class: "result centering" %>
+            <div class="wrapper-button">
+                <button type="button" id="button" class="btn-success">START</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
