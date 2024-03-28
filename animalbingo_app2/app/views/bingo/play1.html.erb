@@ -10,21 +10,24 @@
     <div class="container">
         <div class="bingo">
             <!-- ビンゴカード -->
-            <div class="card">
-                <div class="comment">コメント
-                </div>
-                <div class="outer"  id="outer">
-                </div>
+            <div class="bingo-heading">
+                <h2>ビンゴカード</h2>
             </div>
-        </div>
-        <div class="roulette">
-            <!-- ルーレット -->
-            <%= image_tag 'animal/1.png', size: '40x40',id: "result", class: "result centering" %>
-            <div class="wrapper-button">
-                <button type="button" id="button" class="btn-success">START</button>
+            <div class="card">
+                <div class="outer"  id="outer">
+
+                </div>
             </div>
         </div>
     </div>
 
+    <script src="bingo.js"></script>
+    <script>
+        const images = <%= raw @pictures.to_json %>;
+        const imagePath = "<%= asset_path('animal/1.png') %>";
+        const imagePaths = <%= raw @image_paths.map { |path| "animal/#{path}" }.to_json %>;
+        const imagePathsArray = <%= raw @image_paths.map { |path| asset_path("animal/#{path}") }.to_json %>;
+  // imagesを使用したJavaScriptのコード
+</script>
 </body>
 </html>
