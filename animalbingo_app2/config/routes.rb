@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   root "static_pages#top"
 
   get "bingo" => "bingo#play"
+
+  resources :contacts, only: [:new, :create]
+  
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 end

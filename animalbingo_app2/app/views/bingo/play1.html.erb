@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ビンゴ</title>
+    <link href="../../assets/stylesheets/bingo_ruret.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- ビンゴカード -->
+        <div class="bingo">
+            <div class="bingo-heading">
+                <h2>スタートボタンを押してね</h2>
+            </div>
+            <div class="card">
+                <div class="outer"  id="outer">
+                </div>
+            </div>
+        </div>
+        <!-- ルーレット -->
+        <div class="roulette">
+            <div class="ruret_text">
+                <h2>ハムスター</h2>
+            </div>
+            <img id="result" class="result centering" src=<%= asset_path('animal/1.png') %> alt="result image">
+            <div class="wrapper-button">
+                <button id="button" class="button">START</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="bingo.js"></script>
+    <script>
+        const images = <%= raw @pictures.to_json %>;
+        const names = <%= raw @names.to_json %>;
+        //const imagePath = "<%= asset_path('animal/1.png') %>";
+        const imagePaths = <%= raw @image_paths.map { |path| "#{path}" }.to_json %>;
+        const imagePathsArray = <%= raw @image_paths.map { |path| asset_path("#{path}") }.to_json %>;
+  // imagesを使用したJavaScriptのコード
+</script>
+</body>
+</html>
