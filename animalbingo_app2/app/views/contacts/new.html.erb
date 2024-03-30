@@ -1,11 +1,26 @@
+<header>
   <h1>お問合せフォーム</h1>
-  <%= form_with model:@contact do |f| %>
-    <p>
-      <%= f.label :name,"お名前" %>
-      <%= f.text_field :name %>
-      <br>
-      <%= f.label :message,"お問合せ内容" %>
-      <%= f.text_area :message %>
-    </p>
-    <%= f.submit '送信' %>
-  <% end %>
+</header>
+<div id="form">
+
+  <div class="fish" id="fish"></div>
+  <div class="fish" id="fish2"></div>
+
+  <div id="waterform">
+    <%= form_with model:@contact do |f| %>
+      <div class="formgroup" id="name-form">
+        <%= f.label :name,"✿  ネーム" %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="formgroup" id="mail-form">
+        <%= f.label :mail,"✿  メール" %>
+        <%= f.text_field :mail %>
+      </div>
+      <div class="formgroup" id="message-form">
+        <%= f.label :message,"✿  メッセージ" %>
+        <%= f.text_area :message %>
+      </div>
+      <%= f.submit 'そうしん' %>
+    <% end %>
+  </div>
+</div>
