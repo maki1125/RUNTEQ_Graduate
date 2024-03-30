@@ -1,6 +1,6 @@
 class BingoController < ApplicationController
   def play
-    @pictures = Animal.order("RAND()").limit(10)
+    @pictures = Dinosaur.order("RAND()").limit(10)
     @image_paths = @pictures.map(&:img) #データの順を同じにするためにpluckではくmapを使用。
     @names = @pictures.map(&:name)
     # binding.pry
