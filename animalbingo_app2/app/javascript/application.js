@@ -2,4 +2,5 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-import './custom/bingo_ruret.js'
+
+

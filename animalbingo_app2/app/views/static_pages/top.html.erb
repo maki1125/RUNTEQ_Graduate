@@ -5,7 +5,7 @@
     <br>遊びながら動物を学べて知育にピッタリ！
     <br>親子の楽しい時間を提供します。
     </p>
-    <button type="button" class="btn btn-success">さっそく遊ぶ</button>
+    <%= button_to "さっそく遊ぶ", {controller: 'bingo', action: 'play'}, method: :get %>
     <%= image_tag 'animal/1.png', size: '40x40' %>
   </div>
 </div>

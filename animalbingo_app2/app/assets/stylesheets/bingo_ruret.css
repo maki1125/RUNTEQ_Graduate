@@ -8,7 +8,7 @@
 .card{
     background-color: bisque;
     padding: 10px;
-    min-width:100px;
+    min-width:500px;
 }
 .outer{
     display:flex;
