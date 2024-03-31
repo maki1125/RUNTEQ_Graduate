@@ -16,7 +16,10 @@ Rails.application.routes.draw do
 
   #ユーザー登録
   resources :users, only: %i[new create]
-  
+
+  #コレクション
+  resources :collections, only: %i[index show]
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end

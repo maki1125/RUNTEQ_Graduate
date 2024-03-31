@@ -1,0 +1,10 @@
+.card{
+  background-color: bisque;
+  padding: 10px;
+  min-width:100px;
+}
+
+.bingo {
+  flex: 2;
+  text-align: center;
+}
