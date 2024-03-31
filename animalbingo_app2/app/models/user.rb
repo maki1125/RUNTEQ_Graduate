@@ -1,4 +1,18 @@
 class User < ApplicationRecord
+  has_many :user_pictures
+  has_many :pictures, through: :user_pictures
+
+  # それぞれの絵柄の一覧を取得する
+  def animals
+    pictures.where(type: 'Animal')
+  end
+  def fishes
+    pictures.where(type: 'Fish')
+  end
+  def dinosaurs
+    pictures.where(type: 'Dinosaur')
+  end
+
   authenticates_with_sorcery!
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
