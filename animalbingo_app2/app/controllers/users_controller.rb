@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: %i[create new]
+  
   def new
     @user = User.new #(新規登録で作ったデータを@userに代入する)
   end
