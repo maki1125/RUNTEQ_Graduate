@@ -1,3 +1,5 @@
+console.log("collection/index")
+
 //javascriptがちゃんと読み込まれるようにするため、"turbo:load"を追加。
 document.addEventListener("turbo:load", function() {
   // ここにJavaScriptの処理を記述
@@ -11,7 +13,8 @@ document.addEventListener("turbo:load", function() {
 
   const COLUMN_LENGTH = 4;
   const ROW_LENGTH = 5;
-  const squareWidth = 100 / 4; // カラム数に基づいたマスの幅
+  const squareWidth = 100 / 5; // カラム数に基づいたマスの幅
+  console.log(squareWidth);
   let squareIdCounter = 0; // マスのID用のカウンターを初期化
   let outer = document.getElementById('outer'); //htmlに設定
   var name_card; //クリックしたビンゴますのID ID番号-動物の名前
@@ -21,7 +24,7 @@ document.addEventListener("turbo:load", function() {
   var del=1; //ルーレット用動物一覧の削除した履歴。0はまだ削除していないの意味。
   var num=9; //カードの中のまだクリックしていないマス数。
 
-  // ビンゴカード作成
+  // 一覧作成
   for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){// 画像をマス上に表示
       let divSquare = document.createElement('div');//セルのdiv要素作成。
       divSquare.classList.add('square'); //作成したセルにsquareクラスを追加。
@@ -30,19 +33,41 @@ document.addEventListener("turbo:load", function() {
       if (allimg.includes(i.toString())){
       img.src = imagePathsArray[imgcount]; // 画像のパスを設定.htmlで変数作成。
       imgcount += 1;  
+       // クリックイベントを追加
+    divSquare.addEventListener('click', function() {
+      // クリックされたときに実行される関数を呼び出す
+      handleImageClick(i);
+  });
     }else{
       img.src = imagePathsArray[imagePaths.length -1];
+      divSquare.addEventListener('click', function() {
+        // クリックされたときに実行される関数を呼び出す
+        console.log("クリックされました")
+        $(div).animate({left: '+=20'},100);//左右に振るわせる。
+        $(div).animate({left: '-=40'},100);
+        $(div).animate({left: '+=40'},100);
+        $(div).animate({left: '-=40'},100);
+        $(div).animate({left: '+=20'},100);
+    });
     }
       div.appendChild(img);//div要素の中にimg要素を追加。
       divSquare.appendChild(div)
       outer.appendChild(divSquare);
-      divSquare.setAttribute('id', `${squareIdCounter}-${names[i]}`);
+      divSquare.setAttribute('id', `${i}`);
       //console.log(names[i])
-      squareIdCounter++; // カウンターをインクリメント
-  }
+      squareIdCounter++; // カウンターをインクリメント  
+
+    }
   //ビンゴカードの並びの設定
   $('.square').css('flex', `0 0 ${squareWidth}%`);
 
+//詳細ページ表示
+  function handleImageClick(imageId) {
+    // クリックされた画像のIDを使用して詳細ページのURLを構築
+    const detailPageUrl = `/collections/${imageId}`;
+    // 詳細ページへリダイレクト
+    window.location.href = detailPageUrl;
+}
   //ビンゴカードの上のメッセージ
   const headingElement = document.querySelector('.bingo-heading h2');// テキストを表示する要素を取得
   headingElement.textContent = "STARTボタンを押してね";// テキストを変更

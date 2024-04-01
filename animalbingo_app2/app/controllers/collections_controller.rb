@@ -8,5 +8,7 @@ class CollectionsController < ApplicationController
   end
 
   def show
+    @animal = Animal.find(params[:id])
+    # binding.pry
   end
 end
