@@ -1,2 +1,58 @@
-<h1>Collection#show</h1>
-<p>Find me in app/views/collection/show.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" /> 
+  <title>details</title>
+  <style type="text/css">
+    .navigation{
+      height: 90px;
+      text-align: center;
+      background-color: #1e90ff;
+      color: #fff;
+    }
+    main{
+      display: flex;
+      min-height: 100vh;
+      margin: 15px 0 30px 0;
+    }
+    .LeftContent{
+      flex: 1;
+      text-align: center;
+      margin-right: 15px;
+    }
+    #name{
+      top:auto;
+    }
+    .RightContent{
+      flex: 1;
+      text-align: center;
+      margin-right: 15px;
+    }
+    #back {
+      width: 10em;
+      height: 3em;
+      bottom:auto;
+    }
+  </style>
+  <% content_for :js do %>
+    <%= javascript_import_module_tag "show" %>
+  <% end %>
+</head>
+<body>
+  <main>
+  <div class="LeftContent">
+    <p id="name"><%= @animal.name %></p>
+    <%= image_tag @animal.img %>
+    <%= button_to "戻る", collections_path, id: "back", method: :get %>
+  </div>
+  <div class="RightContent">
+    <iframe width="560" height="315" 
+    src="<%= @animal.youtube_url %>"
+    title="YouTube video player" frameborder="0" allow="accelerometer; 
+    autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+    </iframe>
+  </div>
+  </main>
+  
+
+</body>

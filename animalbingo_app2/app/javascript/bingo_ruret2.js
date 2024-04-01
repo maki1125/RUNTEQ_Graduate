@@ -1,7 +1,8 @@
+console.log("bingo_ruret");
 //javascriptがちゃんと読み込まれるようにするため、"turbo:load"を追加。
 document.addEventListener("turbo:load", function() {
     // ここにJavaScriptの処理を記述
-    console.log("test!")
+    console.log("bingo_ruret")
 
     const COLUMN_LENGTH = 3;
     const ROW_LENGTH = 3;
