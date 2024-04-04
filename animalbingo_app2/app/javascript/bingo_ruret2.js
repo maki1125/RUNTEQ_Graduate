@@ -10,6 +10,7 @@ document.addEventListener("turbo:load", function() {
     let squareIdCounter = 0; // マスのID用のカウンターを初期化
     let outer = document.getElementById('outer'); //htmlに設定
     var name_card; //クリックしたビンゴますのID ID番号-動物の名前
+    var name; //クリックした動物の名前
     var index; //クリックしたビンゴマスのID番号
     var bingoAchieved = false; //ビンゴ成立か判定のフラグ
     let bingoImages = [];// ビンゴした画像を格納する配列を定義
@@ -32,16 +33,12 @@ document.addEventListener("turbo:load", function() {
         divSquare.addEventListener('click', function(event) {// .square 要素に対して直接クリックイベントを設定
             name_card = event.currentTarget.id; // クリックされた要素のIDを取得
             const imgsrc = event.currentTarget.src; // クリックされた要素のIDを取得
-            //console.log('Clicked square ID:', squareId.substr(7,3)); //数字だけ抜き出し
-            //console.log('Clicked square ID:', name_card); //数字だけ抜き出し
-            //console.log('Clicked imgsrc:', imgsrc); //数字だけ抜き出し
-            //console.log(name_ruret);
-            //console.log(name_card.substr(0,name_card.indexOf("-")))
             index = name_card.substr(0,name_card.indexOf("-")); //クリックしたマスのID取得。
+            name = name_card.substr(name_card.indexOf("-")+1,10); //クリックしたマスのどうぶつ名取得。
             var x = index%3;
             var y = Math.floor(index/3);
             //ルーレットの動物と一致しているか確認
-            if (name_ruret==name_card.substr(name_card.indexOf("-")+1,10)){ //動物名だけ抜き出す。
+            // if (name_ruret==name_card.substr(name_card.indexOf("-")+1,10)){ //動物名だけ抜き出す。
                 headingElement.textContent = "正解！";// テキストを変更
                 //console.log("正解！");
                 divSquare.classList.add('gray'); divSquare.onclick = null;//色をつける
@@ -66,15 +63,14 @@ document.addEventListener("turbo:load", function() {
                 $(div).animate({top: '-=40'},100);
                 $(div).animate({top: '+=20'},100);
                 };
-            }else{
+            //}else{
                 headingElement.textContent = "違うよ、、、";// テキストを変更
-                //console.log('違うよ、、、')
                 $(div).animate({left: '+=20'},100);//左右に振るわせる。
                 $(div).animate({left: '-=40'},100);
                 $(div).animate({left: '+=40'},100);
                 $(div).animate({left: '-=40'},100);
                 $(div).animate({left: '+=20'},100);
-            }
+            //}
         });
     }
     //ビンゴカードの並びの設定
@@ -160,15 +156,6 @@ document.addEventListener("turbo:load", function() {
         bingoAchieved = false;
         var x = index%3 //クリックした列番号　0,1,2
         var y = Math.floor(index/3) //クリックしたマスの行の番号　0,1,2
-        //console.log(x,y)
-        //squaresInColumn = [];
-        //squaresInColumn1 = [];
-        //squaresInColumn2 = [];
-        //squaresInColumn3 = [];
-        //squaresInColumn4 = [];
-        // 各列についてビンゴが成立しているかチェック
-        //console.log('列');
-        //for (let col = 0; col < COLUMN_LENGTH; col++) {
 
         //列の確認
         let bingo_count = 0;
@@ -243,15 +230,20 @@ document.addEventListener("turbo:load", function() {
         //console.log(bingo_count);
         console.log("bingoAchieved",bingoAchieved);
         console.log("bingoImages",bingoImages);
+
     };
 
 
     function animateBingoImages() {
         if (bingoAchieved) {
+            let bingo_list = [];
             console.log(bingoImages);
             bingoImages.forEach(nodeList => {
                 nodeList.forEach(element => {
                     console.log(element);
+                    console.log(element.id.substr(name_card.indexOf("-")+1,10));
+                    bingo_list.push(element.id.substr(name_card.indexOf("-")+1,10));
+                    bingo_list = Array.from(new Set(bingo_list)); //重複を除く。
                     let animalImg = element.querySelector('img'); // 動物のimg要素を取得
                     animalImg.animate(
                         // 途中の状態を表す配列
@@ -267,8 +259,25 @@ document.addEventListener("turbo:load", function() {
                         },
                     );
                 });
+            // console.log(bingo_list);
+            //
+            $.ajax({
+                // 実行したいactionへのpathに置き換えてください。
+                // 例えば users_controller の create アクションなどの場合は
+                // /users/create などとなると思います。
+                url: '/collections/save',
+                // GET, POST, PUT, DELETEなどを設定します。
+                type: 'POST',
+                // urlにつけるパラメータを指定します。
+                data: {
+                  // JSの変数の中のデータをRailsに渡します。
+                  // Rails からは parmas[:hoge] で受け取れます。
+                  hoge: bingo_list
+                },
+              })
             });
         }
+        
     }
 
     //document.addEventListener("DOMContentLoaded", function() {

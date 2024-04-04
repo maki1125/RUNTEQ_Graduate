@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_31_034826) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_04_115700) do
   create_table "contacts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "message", null: false
@@ -30,7 +30,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_31_034826) do
   create_table "user_pictures", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "picture_id", null: false
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["picture_id"], name: "index_user_pictures_on_picture_id"
