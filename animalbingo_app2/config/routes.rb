@@ -19,7 +19,8 @@ Rails.application.routes.draw do
 
   #コレクション
   resources :collections, only: %i[index show]
-
+  post '/collections/save', to: 'collections#save'
+  
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
