@@ -9,6 +9,7 @@ class BingoController < ApplicationController
     @play_btn = @mode.play_mode
     @favorite_btn = @mode.picture_mode
     @level_btn = @mode.level_mode
+    #binding.pry
     end
     #@play_btn = params[:play_button]
     #@favorite_btn = params[:favorite_button]
@@ -43,7 +44,10 @@ class BingoController < ApplicationController
     @names = @pictures.map(&:name)
     
     # binding.pry
-    render 'bingo/play1'
-    
+    if @play_btn==2
+      render 'bingo/play2'
+    else
+      render 'bingo/play1'
+    end
   end
 end

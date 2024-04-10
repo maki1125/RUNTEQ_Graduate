@@ -1,4 +1,37 @@
-/* クリック時の色を指定 */
+.radiobox {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 2000px;
+}
+
+label {
+  background-color: #d5e6f9;
+  color: black;
+  display: inline-block;
+  padding: 10px 10px;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 800px;
+  font-size: 15px;
+  text-align: center;
+  
+}
+
 .selected {
-  background-color: lightblue;
+  background-color: #007bff;
+  color: #fff;
+}
+
+
+
+.hidden-input {
+  display: none;
+}
+
+/* ラジオボタンの非表示 */
+.custom-radio {
+  display: none;
 }

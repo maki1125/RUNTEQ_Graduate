@@ -10,7 +10,7 @@ class ModesController < ApplicationController
       @mode = current_user.mode
       #binding.pry
     end
-    # binding.pry
+    #binding.pry
   end
 
   def create

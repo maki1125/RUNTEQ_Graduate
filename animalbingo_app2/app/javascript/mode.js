@@ -1,122 +1,60 @@
-// ボタン要素を取得
-var playButtons = document.querySelectorAll('.play-button');
-var favoriteButtons = document.querySelectorAll('.favorite-button');
-var levelButtons = document.querySelectorAll('.level-button');
+console.log(play_mode,pic_mode+2,level_mode+5)
 
-// フォーム要素を取得
-var form = document.getElementById('playModeForm');
-var submitButton = form.querySelector('[type="submit"]');
-
-var selectedPlayButton
-var selectedFavoriteButton
-var selectedLevelButton
-
-// ボタンにクリックイベントを追加
-playButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    // クリックされたボタンにselectedクラスを追加
-    button.classList.add('selected');
-    // 他の選択されているボタンの選択状態を解除
-    playButtons.forEach(function(otherButton) {
-      if (otherButton !== button) {
-        otherButton.classList.remove('selected');
-      }
+document.addEventListener("DOMContentLoaded", function() {
+  //play_modeの処理
+  //現在選択中のものを表示する
+  const nowplay = document.getElementById(`radio${play_mode}`); //現在のモード取得　
+  const nowplaylabel = document.querySelector(`label[for='radio${play_mode}']`); //現在のモード取得　
+  nowplay.checked = true;
+  nowplaylabel.classList.add("selected");
+  //クリックしたときにselectedにする
+  const plays = document.querySelectorAll(".play-mode");
+  console.log(plays)
+  plays.forEach(function(one) {
+    one.addEventListener("click", function() {
+      // 選択されたボタンを強調表示
+      plays.forEach(function(rb) {
+        rb.classList.remove("selected");
+      });
+      one.classList.add("selected");
     });
-    // ボタンの選択状態によって送信ボタンの活性/非活性を切り替える
-    //toggleSubmitButton();
-    // 遊び方ボタンの選択情報を取得
-    selectedPlayButton = getButtonSelection(playButtons).textContent;
-    if (selectedPlayButton) {
-      console.log("遊び方: " + selectedPlayButton);
-    }
-
-    updateHiddenFieldValue('play_button', selectedPlayButton);
   });
-});
 
-//絵の選択
-favoriteButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    // クリックされたボタンにselectedクラスを追加
-    button.classList.add('selected');
-    // 他の選択されているボタンの選択状態を解除
-    favoriteButtons.forEach(function(otherButton) {
-      if (otherButton !== button) {
-        otherButton.classList.remove('selected');
-      }
+  //絵柄の選択の処理
+  //現在選択中のものを表示する
+  const nowpic = document.getElementById(`radio${parseInt(pic_mode)+2}`); //現在のモード取得　
+  const nowpiclabel = document.querySelector(`label[for='radio${parseInt(pic_mode)+2}']`); //現在のモード取得　
+  nowpic.checked = true;
+  nowpiclabel.classList.add("selected");
+  //クリックしたときにselectedにする
+  const pics = document.querySelectorAll(".picture-mode");
+  pics.forEach(function(one) {
+    one.addEventListener("click", function() {
+      // 選択されたボタンを強調表示
+      pics.forEach(function(rb) {
+        rb.classList.remove("selected");
+      });
+      one.classList.add("selected");
     });
-    // 好きな絵ボタンの選択情報を取得
-    selectedFavoriteButton = getButtonSelection(favoriteButtons).textContent;
-    if (selectedFavoriteButton) {
-      console.log("好きな絵: " + selectedFavoriteButton);
-    }
-    updateHiddenFieldValue('favorite_button', selectedFavoriteButton);
-    // ボタンの選択状態によって送信ボタンの活性/非活性を切り替える
-    //toggleSubmitButton();
   });
-});
 
-//レベルの選択
-levelButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    // クリックされたボタンにselectedクラスを追加
-    button.classList.add('selected');
-    // 他の選択されているボタンの選択状態を解除
-    levelButtons.forEach(function(otherButton) {
-      if (otherButton !== button) {
-        otherButton.classList.remove('selected');
-      }
+  //レベルの選択の処理
+  //現在選択中のものを表示する
+  const nowlevel = document.getElementById(`radio${parseInt(level_mode)+5}`); //現在のモード取得　
+  const nowlevellabel = document.querySelector(`label[for='radio${parseInt(level_mode)+5}']`); //現在のモード取得　
+  nowlevel.checked = true;
+  nowlevellabel.classList.add("selected");
+  //クリックしたときにselectedにする
+  const levels = document.querySelectorAll(".level-mode");
+  levels.forEach(function(one) {
+    one.addEventListener("click", function() {
+      // 選択されたボタンを強調表示
+      levels.forEach(function(rb) {
+        rb.classList.remove("selected");
+      });
+      one.classList.add("selected");
     });
-    // レベルボタンの選択情報を取得
-    selectedLevelButton = getButtonSelection(levelButtons).textContent;
-    if (selectedLevelButton) {
-      console.log("レベル: " + selectedLevelButton);
-    }
-    updateHiddenFieldValue('level_button', selectedLevelButton);
-    // ボタンの選択状態によって送信ボタンの活性/非活性を切り替える
-    //toggleSubmitButton();
   });
-});
 
-// 送信ボタンの活性/非活性を切り替える関数
-function toggleSubmitButton() {
-  var allButtonsSelected = 
-    document.querySelectorAll('.play-button.selected').length === 1 &&
-    document.querySelectorAll('.favorite-button.selected').length === 1 &&
-    document.querySelectorAll('.level-button.selected').length === 1;
   
-  submitButton.disabled = !allButtonsSelected;
-}
-
-// 最初から選択されているボタンがある場合、フォームの送信ボタンを有効化する
-toggleSubmitButton();
-
-// hiddenフィールドを作成してフォームに追加する関数
-//function addHiddenField(form, name, value) {
-  //var hiddenField = document.createElement('input');
-  //hiddenField.type = 'hidden';
-  //hiddenField.name = name;
-  //hiddenField.value = value;
-  //form.appendChild(hiddenField);
-//}
-
-// ボタンが選択されたかどうかを取得する関数
-function getButtonSelection(buttons) {
-  var selectedButton = null;
-  buttons.forEach(function(button) {
-    if (button.classList.contains('selected')) {
-      selectedButton = button;
-    }
-  });
-  return selectedButton;
-}
-
-
-// hiddenフィールドの値を更新する関数
-function updateHiddenFieldValue(name, value) {
-  var hiddenField = document.querySelector('input[type="hidden"][name="' + name + '"]');
-  if (hiddenField) {
-    hiddenField.value = value;
-  }
-}
-
+});
