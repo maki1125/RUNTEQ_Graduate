@@ -40,7 +40,7 @@ console.log(mass);
             var x = index%MASS;
             var y = Math.floor(index/MASS);
             //ルーレットの動物と一致しているか確認
-            //if (name_ruret==name_card.substr(name_card.indexOf("-")+1,10)){ //動物名だけ抜き出す。
+            if (name_ruret==name_card.substr(name_card.indexOf("-")+1,10)){ //動物名だけ抜き出す。
                 headingElement.textContent = "正解！";// テキストを変更
                 //console.log("正解！");
                 divSquare.classList.add('gray'); divSquare.onclick = null;//色をつける
@@ -65,14 +65,14 @@ console.log(mass);
                 $(div).animate({top: '-=40'},100);
                 $(div).animate({top: '+=20'},100);
                 };
-            //}else{
+            }else{
                 headingElement.textContent = "違うよ、、、";// テキストを変更
                 $(div).animate({left: '+=20'},100);//左右に振るわせる。
                 $(div).animate({left: '-=40'},100);
                 $(div).animate({left: '+=40'},100);
                 $(div).animate({left: '-=40'},100);
                 $(div).animate({left: '+=20'},100);
-            //}
+            }
         });
     }
     //ビンゴカードの並びの設定

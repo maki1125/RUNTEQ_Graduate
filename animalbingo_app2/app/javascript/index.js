@@ -6,6 +6,7 @@ const ROW_LENGTH = 5; //表示マスの列数
 const squareWidth = 100 / ROW_LENGTH; // カラム数に基づいたマスの幅
 let outer = document.getElementById('outer'); //htmlに設定
 let pic = pic_mode //選択されている絵柄
+let all_img
 
 // 一覧作成
 for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){// 画像をマス上に表示
@@ -73,7 +74,7 @@ buttons.forEach(button => {
 
 //上ボタンの要素（絵柄の選択）
 const pic_buttons = document.querySelectorAll('.btn1');//ボタンの要素取得
-var all_img=allanimal_img
+//var all_img=allanimal_img
 // ボタンにイベントリスナーを追加する
 pic_buttons.forEach(button => {
   button.addEventListener('click', () => {
