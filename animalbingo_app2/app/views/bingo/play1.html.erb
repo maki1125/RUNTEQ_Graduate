@@ -34,6 +34,7 @@
     </div>
     
     <script> //javascriptにデータを渡す。
+        mass = <%= raw @mass.to_json %>;
         images = <%= raw @pictures.to_json %>;
         names = <%= raw @names.to_json %>;
         //const imagePath = "<%= asset_path('animal/1.png') %>";

@@ -1,12 +1,14 @@
 console.log("bingo_ruret");
+console.log(mass);
 //javascriptがちゃんと読み込まれるようにするため、"turbo:load"を追加。
-document.addEventListener("turbo:load", function() {
+// document.addEventListener("turbo:load", function() {
     // ここにJavaScriptの処理を記述
     console.log("bingo_ruret")
 
-    const COLUMN_LENGTH = 3;
-    const ROW_LENGTH = 3;
-    const squareWidth = 100 / 3; // カラム数に基づいたマスの幅
+    //const COLUMN_LENGTH = mass;
+    //const ROW_LENGTH = mass;
+    const MASS = mass;
+    const squareWidth = 100 / MASS; // カラム数に基づいたマスの幅
     let squareIdCounter = 0; // マスのID用のカウンターを初期化
     let outer = document.getElementById('outer'); //htmlに設定
     var name_card; //クリックしたビンゴますのID ID番号-動物の名前
@@ -15,10 +17,10 @@ document.addEventListener("turbo:load", function() {
     var bingoAchieved = false; //ビンゴ成立か判定のフラグ
     let bingoImages = [];// ビンゴした画像を格納する配列を定義
     var del=1; //ルーレット用動物一覧の削除した履歴。0はまだ削除していないの意味。
-    var num=9; //カードの中のまだクリックしていないマス数。
+    var num=MASS*MASS; //カードの中のまだクリックしていないマス数。
 
     // ビンゴカード作成
-    for(let i = 0; i < COLUMN_LENGTH * ROW_LENGTH; i++){// 画像をマス上に表示
+    for(let i = 0; i < MASS * MASS; i++){// 画像をマス上に表示
         let divSquare = document.createElement('div');//セルのdiv要素作成。
         divSquare.classList.add('square'); //作成したセルにsquareクラスを追加。
         let div = document.createElement('div');//セル内に画像を配置するためのdiv要素作成。
@@ -35,10 +37,10 @@ document.addEventListener("turbo:load", function() {
             const imgsrc = event.currentTarget.src; // クリックされた要素のIDを取得
             index = name_card.substr(0,name_card.indexOf("-")); //クリックしたマスのID取得。
             name = name_card.substr(name_card.indexOf("-")+1,10); //クリックしたマスのどうぶつ名取得。
-            var x = index%3;
-            var y = Math.floor(index/3);
+            var x = index%MASS;
+            var y = Math.floor(index/MASS);
             //ルーレットの動物と一致しているか確認
-            // if (name_ruret==name_card.substr(name_card.indexOf("-")+1,10)){ //動物名だけ抜き出す。
+            //if (name_ruret==name_card.substr(name_card.indexOf("-")+1,10)){ //動物名だけ抜き出す。
                 headingElement.textContent = "正解！";// テキストを変更
                 //console.log("正解！");
                 divSquare.classList.add('gray'); divSquare.onclick = null;//色をつける
@@ -88,8 +90,8 @@ document.addEventListener("turbo:load", function() {
     //ルーレットの最初の画像の設定
     function changeImageSource() {
         var image = document.getElementById('result');
-        image.src = imagePathsArray[COLUMN_LENGTH * ROW_LENGTH]; // 新しい画像のファイルパスを設定
-        headingElement2.textContent = names2[COLUMN_LENGTH * ROW_LENGTH];// テキストを変更
+        image.src = imagePathsArray[MASS * MASS]; // 新しい画像のファイルパスを設定
+        headingElement2.textContent = names2[MASS * MASS];// テキストを変更
     }
     // 例として、ページが読み込まれたときに画像のsrc属性を変更する
     window.onload = function() {
@@ -154,12 +156,12 @@ document.addEventListener("turbo:load", function() {
     function checkBingo() {
         bingoImages = []
         bingoAchieved = false;
-        var x = index%3 //クリックした列番号　0,1,2
-        var y = Math.floor(index/3) //クリックしたマスの行の番号　0,1,2
+        var x = index%MASS //クリックした列番号　0,1,2
+        var y = Math.floor(index/MASS) //クリックしたマスの行の番号　0,1,2
 
         //列の確認
         let bingo_count = 0;
-        var columnSelector = `.square:nth-child(3n+${x+1})`; // クリックした列の取得
+        var columnSelector = `.square:nth-child(${MASS}n+${x+1})`; // クリックした列の取得
         var cells = document.querySelectorAll(columnSelector);// 指定の列のマスの要素を取得
         //console.log(cells)
         //const numberOfCells = cells.length;//要素の数を取得。
@@ -169,7 +171,7 @@ document.addEventListener("turbo:load", function() {
             //console.log(cells[i]); // 例: 各セルの内容をコンソールに出力する
             if (cells[i].classList.contains('gray')) {
                 bingo_count += 1;
-                if (bingo_count==COLUMN_LENGTH){
+                if (bingo_count==MASS){
                     bingoAchieved = true; // ビンゴ成立フラグを立てる
                     bingoImages.push(cells);
                     break;
@@ -179,7 +181,7 @@ document.addEventListener("turbo:load", function() {
 
         //行の確認
         bingo_count = 0;
-        columnSelector = `.square:nth-child(n+${y*3+1}):nth-child(-n+${y*3+3})`; // クリックした列の取得
+        columnSelector = `.square:nth-child(n+${y*MASS+1}):nth-child(-n+${y*MASS+MASS})`; // クリックした列の取得
         cells = document.querySelectorAll(columnSelector);// 指定の列のマスの要素を取得
         //console.log(cells)
         //const numberOfCells = cells.length;//要素の数を取得。
@@ -187,7 +189,7 @@ document.addEventListener("turbo:load", function() {
         for (let i = 0; i < cells.length; i++) {
             if (cells[i].classList.contains('gray')) {
                 bingo_count += 1;
-                if (bingo_count==COLUMN_LENGTH){
+                if (bingo_count==MASS){
                     bingoAchieved = true; // ビンゴ成立フラグを立てる
                     bingoImages.push(cells);
                     //squaresInColumn1 = cells;
@@ -198,12 +200,12 @@ document.addEventListener("turbo:load", function() {
 
         //左斜め
         bingo_count = 0;
-        cells = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH + 1}n + 1)`);//行の要素を取得。
+        cells = document.querySelectorAll(`.square:nth-child(${MASS + 1}n + 1)`);//行の要素を取得。
         //console.log(cells);
         for (let i = 0; i < cells.length; i++) {
             if (cells[i].classList.contains('gray')) {
                 bingo_count += 1;
-                if (bingo_count==COLUMN_LENGTH){
+                if (bingo_count==MASS){
                     bingoAchieved = true; // ビンゴ成立フラグを立てる
                     bingoImages.push(cells);
                     //squaresInColumn1 = cells;
@@ -214,14 +216,14 @@ document.addEventListener("turbo:load", function() {
 
         //右斜め
         bingo_count = 0;
-        cells = document.querySelectorAll(`.square:nth-child(${ROW_LENGTH - 1}n + 3)`);//行の要素を取得。
+        cells = document.querySelectorAll(`.square:nth-child(${MASS - 1}n + ${MASS})`);//行の要素を取得。
         //console.log(cells);
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < MASS; i++) {
             if (cells[i].classList.contains('gray')) {
                 bingo_count += 1;
-                if (bingo_count==COLUMN_LENGTH){
+                if (bingo_count==MASS){
                     bingoAchieved = true; // ビンゴ成立フラグを立てる
-                    bingoImages.push(Array.from(cells).slice(0,3)); //4つ目の要素を除くため。
+                    bingoImages.push(Array.from(cells).slice(0,MASS)); //4つ目の要素を除くため。
                     //squaresInColumn1 = cells;
                     break;
                 };
@@ -288,7 +290,9 @@ document.addEventListener("turbo:load", function() {
 
 
 
-    });
+   // });
+
+
     //setTimeout(function() {
         // 指定時間後に実行したい処理
     //}, 1000); // 3000ミリ秒（＝3秒）後に実行

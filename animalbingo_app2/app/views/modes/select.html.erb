@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>モード選択</title>
+    <%= stylesheet_link_tag 'mode', :media => "all" %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<% content_for :js do %>
+        <%= javascript_import_module_tag "mode" %>
+    <% end %>
+</head>
+<body>
+<h1>遊び方ページ</h1>
+
+<%= form_tag bingo_path, method: "get", id: "playModeForm" do %>
+  <h2>遊び方</h2>
+  <%= button_tag "一緒に！", type: "button", class: "play-button selected" %>
+  <%= button_tag "対決！", type: "button", class: "play-button" %>
+
+  <h2>好きな絵</h2>
+  <%= button_tag "どうぶつ", type: "button", class: "favorite-button selected" %>
+  <%= button_tag "さかな", type: "button", class: "favorite-button" %>
+  <%= button_tag "きょうりゅう", type: "button", class: "favorite-button" %>
+
+  <h2>レベル</h2>
+  <%= button_tag "やさしい(3*3マス)", type: "button", class: "level-button selected" %>
+  <%= button_tag "ふつう(4*4マス)", type: "button", class: "level-button" %>
+  <%= button_tag "むずかしい(5*5マス)", type: "button", class: "level-button" %>
+
+  <%= hidden_field_tag :play_button, "一緒に！" %>
+  <%= hidden_field_tag :favorite_button, "どうぶつ" %>
+  <%= hidden_field_tag :level_button, "やさしい(3*3マス)" %>
+  
+  <%= submit_tag "このモードで遊ぶ", disabled: true %>
+<% end %>
+</body>
