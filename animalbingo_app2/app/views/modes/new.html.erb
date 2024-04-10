@@ -1,0 +1,12 @@
+<%= form_with model: @mode do |form| %>
+  <h2>遊び方</h2>
+  <%= form.text_field :play_mode %>
+
+  <h2>好きな絵</h2>
+  <%= form.text_field :picture_mode %>
+
+  <h2>レベル</h2>
+  <%= form.text_field :level_mode %>
+  
+  <%= form.submit "このモードで遊ぶ" %>
+<% end %>

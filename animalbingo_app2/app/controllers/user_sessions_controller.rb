@@ -1,7 +1,9 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[create new]
 
-  def new; end
+  def new
+    flash[:notice] = "コレクションへのアクセスにはログインが必要です"
+  end
 
   def create
     @user = login(params[:email], params[:password]) #emailとpasswordが一致していれば@userにデータが代入される(loginメソッドで検証を行なっている)
@@ -14,6 +16,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_path #リダイレクト先をログイン画面に指定する
+    redirect_to root_path , status: :see_other #リダイレクト先をログイン画面に指定する
   end
 end

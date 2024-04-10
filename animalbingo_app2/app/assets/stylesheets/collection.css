@@ -104,6 +104,8 @@
     padding: 20px 0;
 }
 
+
+/*詳細*/
 .button {
     font-size: 30px;
     display: inline-block;
@@ -113,5 +115,35 @@
     color: #FFF;
     background-color: green;
 
+}
+
+.navigation{
+  height: 90px;
+  text-align: center;
+  background-color: #1e90ff;
+  color: #fff;
+}
+main{
+  display: flex;
+  min-height: 100vh;
+  margin: 15px 0 30px 0;
+}
+.LeftContent{
+  flex: 1;
+  text-align: center;
+  margin-right: 15px;
+}
+#name{
+  top:auto;
+}
+.RightContent{
+  flex: 1;
+  text-align: center;
+  margin-right: 15px;
+}
+#back {
+  width: 10em;
+  height: 3em;
+  bottom:auto;
 }
 

@@ -35,3 +35,9 @@ body {
 footer {
   background-color: rgb(232, 226, 226);
 }
+.container {
+  /* 水平・垂直方向の中央揃え */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

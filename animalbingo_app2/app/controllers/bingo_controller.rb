@@ -2,9 +2,46 @@ class BingoController < ApplicationController
   skip_before_action :require_login
   
   def play
-    @pictures = Animal.order("RAND()").limit(10)
+    flash[:notice] = "ビンゴしましょう"
+    #モード選択
+    if logged_in?
+    @mode = current_user.mode
+    @play_btn = @mode.play_mode
+    @favorite_btn = @mode.picture_mode
+    @level_btn = @mode.level_mode
+    end
+    #@play_btn = params[:play_button]
+    #@favorite_btn = params[:favorite_button]
+    #@level_btn = params[:level_button]
+    # binding.pry
+    #レベルの選択
+    @mass = 3
+    if @level_btn.present?
+      case @level_btn
+      when 1 #"やさしい(3*3マス)"
+        @mass = 3
+      when 2 #"ふつう(4*4マス)"
+        @mass = 4
+      when 3 #"むずかしい(5*5マス)"
+        @mass = 5
+      end
+    end
+    #絵の選択
+    @pictures = Animal.order("RAND()").limit(@mass*@mass+1)
+    if @favorite_btn.present?
+      case @favorite_btn
+      when 1 #"どうぶつ"
+        @pictures = Animal.order("RAND()").limit(@mass*@mass+1)
+      when 2 #"さかな"
+        @pictures = Fish.order("RAND()").limit(@mass*@mass+1)
+      when 3 #"きょうりゅう"
+        @pictures = Dinosaur.order("RAND()").limit(@mass*@mass+1)
+      end
+    end
+        
     @image_paths = @pictures.map(&:img) #データの順を同じにするためにpluckではくmapを使用。
     @names = @pictures.map(&:name)
+    
     # binding.pry
     render 'bingo/play1'
     

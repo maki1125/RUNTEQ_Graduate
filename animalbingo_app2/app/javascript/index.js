@@ -1,76 +1,130 @@
-console.log("collection/index")
+let colnum //指定した絵柄のコレクション一覧　ex[1,4,7]
+let colimgass //指定した絵柄のコレクションのアセット変換したimgパスの一覧
+var colcount=0; //一覧表示時に使用するカウント。colimgassの要素指定に使用。
+const COLUMN_LENGTH = 4; //表示マスの行数
+const ROW_LENGTH = 5; //表示マスの列数
+const squareWidth = 100 / ROW_LENGTH; // カラム数に基づいたマスの幅
+let outer = document.getElementById('outer'); //htmlに設定
+let pic = pic_mode //選択されている絵柄
 
-//javascriptがちゃんと読み込まれるようにするため、"turbo:load"を追加。
-document.addEventListener("turbo:load", function() {
-  // ここにJavaScriptの処理を記述
-  console.log(imagePaths);
-  console.log(imagePaths[imagePaths.length -1]);
-  console.log(imagePaths[2].match(/\d+/)[0]); //数字を抽出する。
-  const allimg = imagePaths.map(path => path.match(/\d+/)[0]);//パスから数字を抽出して配列に入れる。
-  console.log(allimg);
-  var imgcount=0;
-  console.log(allimg.includes(1));
+// 一覧作成
+for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){// 画像をマス上に表示
+  //要素作成
+  let divSquare = document.createElement('div');//セルのdiv要素作成。
+  let div = document.createElement('div');//セル内に画像を配置するためのdiv要素作成。
+  let img = document.createElement('img');//img要素の作成。
+  outer.appendChild(divSquare);
+  divSquare.appendChild(div);
+  div.appendChild(img);//div要素の中にimg要素を追加。
+  divSquare.classList.add('square'); //作成したセルにsquareクラスを追加。
+  img.setAttribute('id', `${i}`);
+  //bingoリストにあるかどうか確認＋画像の表示
+  pictureData(pic_mode)//選択されている絵柄のデータを取得
+  if (colnum.includes(i.toString())){
+    img.src = colimgass[colcount]; // 画像のパスを設定.htmlで変数作成。imagePathsでは画像表示できなくて、asset_pathに変換したものがcolimgass.ビンゴした画像のデータだけ。
+    colcount += 1;  
+    img.classList.add("ok"); //これによって絵の動きを変える。
+  }else{
+    img.src = question_imgass; //はてなマーク
+    img.classList.remove("ok");
+  }
+  addClickEvent(img,i) //ますをクリックした時の動きを追加
+}
+//ビンゴカードの並びの設定
+$('.square').css('flex', `0 0 ${squareWidth}%`);
 
-  const COLUMN_LENGTH = 4;
-  const ROW_LENGTH = 5;
-  const squareWidth = 100 / 5; // カラム数に基づいたマスの幅
-  console.log(squareWidth);
-  let squareIdCounter = 0; // マスのID用のカウンターを初期化
-  let outer = document.getElementById('outer'); //htmlに設定
-  var name_card; //クリックしたビンゴますのID ID番号-動物の名前
-  var index; //クリックしたビンゴマスのID番号
-  var bingoAchieved = false; //ビンゴ成立か判定のフラグ
-  let bingoImages = [];// ビンゴした画像を格納する配列を定義
-  var del=1; //ルーレット用動物一覧の削除した履歴。0はまだ削除していないの意味。
-  var num=9; //カードの中のまだクリックしていないマス数。
-
-  // 一覧作成
-  for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){// 画像をマス上に表示
-      let divSquare = document.createElement('div');//セルのdiv要素作成。
-      divSquare.classList.add('square'); //作成したセルにsquareクラスを追加。
-      let div = document.createElement('div');//セル内に画像を配置するためのdiv要素作成。
-      let img = document.createElement('img');//img要素の作成。
-      if (allimg.includes(i.toString())){
-      img.src = imagePathsArray[imgcount]; // 画像のパスを設定.htmlで変数作成。
-      imgcount += 1;  
-       // クリックイベントを追加
-    divSquare.addEventListener('click', function() {
-      // クリックされたときに実行される関数を呼び出す
-      handleImageClick(i);
+// 画像に動きをつける関数
+function addClickEvent(img,index) {
+img.addEventListener('click', function(event) {
+    if (img.classList.contains("ok")) {
+        handleImageClick(index); //詳細ページにとぶ
+    } else {
+      //左右に振るわせる。
+      let div = img.parentNode; // img要素の親ノードを取得
+      $(div).animate({left: '+=20'},100);
+      $(div).animate({left: '-=40'},100);
+      $(div).animate({left: '+=40'},100);
+      $(div).animate({left: '-=40'},100);
+      $(div).animate({left: '+=20'},100);
+    }
   });
-    }else{
-      img.src = imagePathsArray[imagePaths.length -1];
-      divSquare.addEventListener('click', function() {
-        // クリックされたときに実行される関数を呼び出す
-        console.log("クリックされました")
-        $(div).animate({left: '+=20'},100);//左右に振るわせる。
-        $(div).animate({left: '-=40'},100);
-        $(div).animate({left: '+=40'},100);
-        $(div).animate({left: '-=40'},100);
-        $(div).animate({left: '+=20'},100);
-    });
-    }
-      div.appendChild(img);//div要素の中にimg要素を追加。
-      divSquare.appendChild(div)
-      outer.appendChild(divSquare);
-      divSquare.setAttribute('id', `${i}`);
-      //console.log(names[i])
-      squareIdCounter++; // カウンターをインクリメント  
-
-    }
-  //ビンゴカードの並びの設定
-  $('.square').css('flex', `0 0 ${squareWidth}%`);
+}
 
 //詳細ページ表示
-  function handleImageClick(imageId) {
-    // クリックされた画像のIDを使用して詳細ページのURLを構築
-    const detailPageUrl = `/collections/${imageId}`;
-    // 詳細ページへリダイレクト
-    window.location.href = detailPageUrl;
+function handleImageClick(imageId) {
+  // クリックされた画像のIDを使用して詳細ページのURLを構築
+  const detailPageUrl = `/collections/${imageId+(parseInt(page)-1)*20}?pic=${pic}`;
+  // 詳細ページへリダイレクト
+  window.location.href = detailPageUrl;
 }
-  //ビンゴカードの上のメッセージ
-  const headingElement = document.querySelector('.bingo-heading h2');// テキストを表示する要素を取得
-  headingElement.textContent = "STARTボタンを押してね";// テキストを変更
 
+//下ボタンの要素の取得（ページの選択）
+let page = 1;
+let page_add = 0;
+const buttons = document.querySelectorAll('.btn');// ボタン要素を取得する
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    // クリックされたボタンのテキストを変数に代入する
+    page = button.textContent; //ページの取得
+    page_add = (parseInt(page)-1)*20 //ページ→IDへ変換
+    changeImage() //画像を変更する
   });
+});
+
+//上ボタンの要素（絵柄の選択）
+const pic_buttons = document.querySelectorAll('.btn1');//ボタンの要素取得
+var all_img=allanimal_img
+// ボタンにイベントリスナーを追加する
+pic_buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    // クリックされたボタンのテキストを変数に代入する
+    page = 1; //ページの取得
+    page_add = (parseInt(page)-1)*20 //ページ→IDへ変換
+    pic = button.textContent;// クリックされたボタンのテキストを変数に代入する
+    pictureData(pic)//選択した絵柄のデータ取得
+    changeImage() //一覧の絵柄変更
+  });
+});
+
+//指定のpictureデータの取得
+function pictureData(pic) {  
+  switch (pic) {
+    case "どうぶつ":
+      all_img = allanimal_img;
+      colnum = colanimal_img.map(path => path.match(/\d+/)[0]); // パスから数字を抽出して配列に入れる。最初は動物のデータを入れる。
+      colimgass = colanimal_imgass;
+      break;
+    case "さかな":
+      all_img = allfish_img;
+      colnum = colfish_img.map(path => path.match(/\d+/)[0]); // パスから数字を抽出して配列に入れる。
+      colimgass = colfish_imgass;
+      break;
+    case "きょうりゅう":
+      all_img = alldinosaur_img;
+      colnum = coldinosaur_img.map(path => path.match(/\d+/)[0]); // パスから数字を抽出して配列に入れる。
+      colimgass = coldinosaur_imgass;
+      break;
+    default:
+      // 何もしない
+  }
+}
+
+//マス一覧画像の変更
+function changeImage(){
+for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){
+  let imgElement = document.getElementById(i);
+  //bingoリストにあるかどうか確認
+  if (colnum.includes((page_add+i).toString())){
+    imgElement.src = all_img[page_add+i-1]; // 画像のパスを設定.htmlで変数作成。何故か-1しないと次のやつになる。
+    imgElement.classList.add("ok");
+  }else{
+    //imgElement.src = colimgass[colimgass.length -1]; //はてなマーク
+    imgElement.src = question_imgass;
+    imgElement.classList.remove("ok");
+  }
+}
+}
+
+
+
 

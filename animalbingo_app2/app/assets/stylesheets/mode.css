@@ -1,0 +1,4 @@
+/* クリック時の色を指定 */
+.selected {
+  background-color: lightblue;
+}

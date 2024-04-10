@@ -3,11 +3,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "static_pages#top" #トップページ
 
-  get "bingo" => "bingo#play" #ビンゴページ
+  #トップページ
+  root "static_pages#top" 
 
-  resources :contacts, only: [:new, :create] #お問い合わせ
+  #ビンゴページ
+  get "bingo" => "bingo#play" 
+
+  #お問い合わせ
+  resources :contacts, only: [:new, :create] 
 
   #ログイン関係
   get 'login', to: 'user_sessions#new' 
@@ -21,6 +25,11 @@ Rails.application.routes.draw do
   resources :collections, only: %i[index show]
   post '/collections/save', to: 'collections#save'
   
+  #モード選択
+  get '/modes/select', to: 'modes#select'
+  resources :modes, only: %i[new create update edit]
+
+  #メール確認（開発用）
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :user_pictures
   has_many :pictures, through: :user_pictures
-
+  has_one :mode, dependent: :destroy
   # それぞれの絵柄の一覧を取得する
   def animals
     pictures.where(type: 'Animal')

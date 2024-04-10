@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_04_115700) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_07_024748) do
   create_table "contacts", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "modes", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "play_mode"
+    t.integer "picture_mode"
+    t.integer "level_mode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_modes_on_user_id", unique: true
   end
 
   create_table "pictures", charset: "utf8mb4", force: :cascade do |t|
@@ -46,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_04_115700) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "modes", "users"
   add_foreign_key "user_pictures", "pictures"
   add_foreign_key "user_pictures", "users"
 end
