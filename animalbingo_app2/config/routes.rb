@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   #トップページ
   root "static_pages#top" 
+  get "privacy" => "static_pages#privacy"
 
   #ビンゴページ
   get "bingo" => "bingo#play" 
