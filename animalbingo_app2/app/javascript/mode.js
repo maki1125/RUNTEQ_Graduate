@@ -1,4 +1,10 @@
-console.log(play_mode,pic_mode+2,level_mode+5)
+//console.log(play_mode,pic_mode+2,level_mode+5)
+if (play_mode==""){
+  play_mode=1
+  pic_mode=1
+  level_mode=1
+}
+//console.log(play_mode,pic_mode+2,level_mode+5)
 
 document.addEventListener("DOMContentLoaded", function() {
   //play_modeの処理

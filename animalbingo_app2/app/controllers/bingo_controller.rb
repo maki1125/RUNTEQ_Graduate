@@ -2,19 +2,22 @@ class BingoController < ApplicationController
   skip_before_action :require_login
   
   def play
-    flash[:notice] = "ビンゴしましょう"
+    #flash[:notice] = "ビンゴしましょう"
     #モード選択
     if logged_in?
-    @mode = current_user.mode
-    @play_btn = @mode.play_mode
-    @favorite_btn = @mode.picture_mode
-    @level_btn = @mode.level_mode
-    #binding.pry
+      @mode = current_user.mode
+      #初回ログインの場合モード選択まだのため
+      if @mode.nil?
+        @play_btn = 1
+        @favorite_btn = 1
+        @level_btn = 1
+      else
+        @play_btn = @mode.play_mode
+        @favorite_btn = @mode.picture_mode
+        @level_btn = @mode.level_mode
+      end
+      #binding.pry
     end
-    #@play_btn = params[:play_button]
-    #@favorite_btn = params[:favorite_button]
-    #@level_btn = params[:level_button]
-    # binding.pry
     #レベルの選択
     @mass = 3
     if @level_btn.present?

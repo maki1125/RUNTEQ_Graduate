@@ -4,7 +4,13 @@ class CollectionsController < ApplicationController
   def index
     #現在のモードで最初の表示のコレクション一覧を変化させる。
     @mode = current_user.mode 
-    @favorite_btn = @mode.picture_mode
+    #初回ログインの場合モード選択未定のため
+    if @mode.nil?
+      @favorite_btn = 1
+    else
+      @favorite_btn = @mode.picture_mode
+    end
+    #選択絵柄ごとの処理
     case @favorite_btn
     when 1 #"どうぶつ"
       @favorite_btn="どうぶつ"
@@ -52,7 +58,8 @@ class CollectionsController < ApplicationController
     @animal_save = Picture.where(name: @bingo_save)
     @animal_save.each do |animal|
       current_user.pictures << animal unless current_user.pictures.exists?(name: animal.name)
+      #binding.pry
     end
-    # binding.pry
+    #binding.pry
   end
 end

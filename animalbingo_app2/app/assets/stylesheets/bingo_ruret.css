@@ -1,49 +1,26 @@
 @charset "utf-8";
+.container{
+    width:800px;
+}
 /*ビンゴカード*/
-
 .bingo {
-    flex: 2;
     text-align: center;
-  }
+}
 .card{
     background-color: bisque;
     padding: 10px;
-    min-width:500px;
+    width: 500px;
 }
 .outer{
     display:flex;
     flex-wrap: wrap;
 }
-.gray{
-    background-color: rgb(48, 183, 255);
-  }
-.bingo-cell {
-    background-color: blue;
-}
-
 .square{
     box-sizing: border-box;
     background-color: #ffffff;
     border:solid 1px black;
     flex: 0 0 20%;
     position: relative;
-    
-}
-.square img {
-    /* 画像のスタイル */
-    max-width: 80%; /* 画像の最大幅をマスの幅に合わせる */
-    max-height: 80%; /* 画像の最大高さをマスの高さに合わせる */
-    display: block; /* インライン要素をブロック要素に変更 */
-    margin: auto; /* 画像を中央に配置 */
-}
-.outer .gray{
-    background-color: rgb(48, 183, 255);
-}
-
-.square::before{
-    content: '';
-    display: block;
-    padding-top:100%;
 }
 .square div{
     position: absolute;
@@ -55,54 +32,61 @@
     justify-content: center;
     align-items: center;
 }
+.square img {
+    /* 画像のスタイル */
+    max-width: 80%; /* 画像の最大幅をマスの幅に合わせる */
+    max-height: 80%; /* 画像の最大高さをマスの高さに合わせる */
+    display: block; /* インライン要素をブロック要素に変更 */
+    margin: auto; /* 画像を中央に配置 */
+}
+.gray{
+    background-color: #b9deff;
+}
+.square::before{
+    content: '';
+    display: block;
+    padding-top:100%;
+}
+
 
 /*ルーレット*/
-
+.ruret_text{
+    width:300px;
+    height:100px;
+}
 .roulette {
     flex: 1;
     text-align: center;
-    align-self: flex-end; /* 下揃えに設定 */
-}
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.wrapper {
-    margin: 0 auto;
-    text-align: center;
+    align-self: flex-end; /* 下揃えに設定。センターに持ってくると絵によってボタンが動くため。 */
+    margin-top: 200px; /* 上部に余白を追加 */
+    margin-bottom: 200px;
 }
 
-.centering {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-
-/* ルーレット */
 .result {
     margin-top: 20px; 
     font-size: 70px;
 
-    width: 130px;
-    height: 130px;
+    margin-bottom:20px;
 }
-
-
-/* ボタン */
-.wrapper-button {
-    padding: 20px 0;
+.square2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left:40px;
+    width:200px;
+    height:200px;
 }
-
+.square2 img {
+    /* 画像のスタイル */
+    max-width: 80%; /* 画像の最大幅をマスの幅に合わせる */
+    max-height: 80%; /* 画像の最大高さをマスの高さに合わせる */
+}
 .button {
     font-size: 30px;
-    display: inline-block;
     padding: .8rem 1.6rem;
     border: none;
     border-radius: 25px;
     color: #FFF;
     background-color: green;
-
 }
 
