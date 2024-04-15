@@ -4,9 +4,9 @@ var colcount=0; //一覧表示時に使用するカウント。colimgassの要�
 const COLUMN_LENGTH = 4; //表示マスの行数
 const ROW_LENGTH = 5; //表示マスの列数
 const squareWidth = 100 / ROW_LENGTH; // カラム数に基づいたマスの幅
-let outer = document.getElementById('outer'); //htmlに設定
+let col_card = document.getElementById('col_card'); //htmlに設定
 let pic = pic_mode //選択されている絵柄
-let all_img
+var all_img //選択された絵柄の全ての画像
 
 // 一覧作成
 for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){// 画像をマス上に表示
@@ -14,7 +14,7 @@ for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){// 画像をマス上に表
   let divSquare = document.createElement('div');//セルのdiv要素作成。
   let div = document.createElement('div');//セル内に画像を配置するためのdiv要素作成。
   let img = document.createElement('img');//img要素の作成。
-  outer.appendChild(divSquare);
+  col_card.appendChild(divSquare);
   divSquare.appendChild(div);
   div.appendChild(img);//div要素の中にimg要素を追加。
   divSquare.classList.add('square'); //作成したセルにsquareクラスを追加。
@@ -62,9 +62,17 @@ function handleImageClick(imageId) {
 //下ボタンの要素の取得（ページの選択）
 let page = 1;
 let page_add = 0;
-const buttons = document.querySelectorAll('.btn');// ボタン要素を取得する
+let page_btn = document.getElementById('pg1');//下のページ選択ボタンの初期選択の色変更
+page_btn.classList.add('selected');
+const buttons = document.querySelectorAll('.btn2');// ボタン要素を取得する
 buttons.forEach(button => {
   button.addEventListener('click', () => {
+    // すべてのボタンの色を元に戻す
+    buttons.forEach(btn => {
+      btn.classList.remove('selected');
+    });
+    // クリックされたボタンの色を変更する
+    button.classList.add('selected');
     // クリックされたボタンのテキストを変数に代入する
     page = button.textContent; //ページの取得
     page_add = (parseInt(page)-1)*20 //ページ→IDへ変換
@@ -74,10 +82,20 @@ buttons.forEach(button => {
 
 //上ボタンの要素（絵柄の選択）
 const pic_buttons = document.querySelectorAll('.btn1');//ボタンの要素取得
-//var all_img=allanimal_img
-// ボタンにイベントリスナーを追加する
 pic_buttons.forEach(button => {
   button.addEventListener('click', () => {
+    //上ボタンの色の操作
+    pic_buttons.forEach(btn => {// すべてのボタンの色を元に戻す
+      btn.classList.remove('selected');
+    });
+    button.classList.add('selected');// クリックされたボタンの色を変更する
+    //下ボタンの色の操作
+    let page_buttons = document.querySelectorAll('.btn2');
+    page_buttons.forEach(btn => {// すべてのボタンの色を元に戻す
+      btn.classList.remove('selected');
+    });
+    page_btn = document.getElementById('pg1');//下のページ選択ボタンの初期選択の色変更
+    page_btn.classList.add('selected');
     // クリックされたボタンのテキストを変数に代入する
     page = 1; //ページの取得
     page_add = (parseInt(page)-1)*20 //ページ→IDへ変換
@@ -89,21 +107,28 @@ pic_buttons.forEach(button => {
 
 //指定のpictureデータの取得
 function pictureData(pic) {  
+  let pic_btn;
   switch (pic) {
     case "どうぶつ":
       all_img = allanimal_img;
       colnum = colanimal_img.map(path => path.match(/\d+/)[0]); // パスから数字を抽出して配列に入れる。最初は動物のデータを入れる。
       colimgass = colanimal_imgass;
+      pic_btn = document.getElementById('animal');//上の絵柄選択ボタンの初期選択の色変更
+      pic_btn.classList.add('selected');
       break;
     case "さかな":
       all_img = allfish_img;
       colnum = colfish_img.map(path => path.match(/\d+/)[0]); // パスから数字を抽出して配列に入れる。
       colimgass = colfish_imgass;
+      pic_btn = document.getElementById('fish');
+      pic_btn.classList.add('selected');
       break;
     case "きょうりゅう":
       all_img = alldinosaur_img;
       colnum = coldinosaur_img.map(path => path.match(/\d+/)[0]); // パスから数字を抽出して配列に入れる。
       colimgass = coldinosaur_imgass;
+      pic_btn = document.getElementById('dinosaur');
+      pic_btn.classList.add('selected');
       break;
     default:
       // 何もしない
@@ -112,18 +137,18 @@ function pictureData(pic) {
 
 //マス一覧画像の変更
 function changeImage(){
-for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){
-  let imgElement = document.getElementById(i);
-  //bingoリストにあるかどうか確認
-  if (colnum.includes((page_add+i).toString())){
-    imgElement.src = all_img[page_add+i-1]; // 画像のパスを設定.htmlで変数作成。何故か-1しないと次のやつになる。
-    imgElement.classList.add("ok");
-  }else{
-    //imgElement.src = colimgass[colimgass.length -1]; //はてなマーク
-    imgElement.src = question_imgass;
-    imgElement.classList.remove("ok");
+  for(let i = 1; i <= COLUMN_LENGTH * ROW_LENGTH; i++){
+    let imgElement = document.getElementById(i);
+    //bingoリストにあるかどうか確認
+    if (colnum.includes((page_add+i).toString())){
+      imgElement.src = all_img[page_add+i-1]; // 画像のパスを設定.htmlで変数作成。何故か-1しないと次のやつになる。
+      imgElement.classList.add("ok");
+    }else{
+      //imgElement.src = colimgass[colimgass.length -1]; //はてなマーク
+      imgElement.src = question_imgass;
+      imgElement.classList.remove("ok");
+    }
   }
-}
 }
 
 

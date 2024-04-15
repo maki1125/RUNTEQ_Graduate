@@ -10,42 +10,47 @@
   <% end %>
 </head>
 <body>
-<%= form_with model: @mode do |form| %>
-  <h2>遊び方</h2>
-  <div class="radiobox">
-    <%= form.radio_button :play_mode, 1, id: "radio1",class: "custom-radio" %>
-    <%= form.label :play_mode_1, "一緒に！👍", class: "play-mode", for: "radio1" %>
-    <%= form.radio_button :play_mode, 2, id: "radio2",class: "custom-radio" %>
-    <%= form.label :play_mode_2, "対決✌️", class: "play-mode", for: "radio2" %>
-  </div>
+  <div class="container">
+  
+  <%= form_with model: @mode do |form| %>
+  <h1>モード選択</h1>
+    <h2>遊び方</h2>
+    <div class="radiobox">
+      <%= form.radio_button :play_mode, 1, id: "radio1",class: "custom-radio" %>
+      <%= form.label :play_mode_1, "一緒に！👍", class: "play-mode", for: "radio1" %>
+      <%= form.radio_button :play_mode, 2, id: "radio2",class: "custom-radio" %>
+      <%= form.label :play_mode_2, "対決✌️", class: "play-mode", for: "radio2" %>
+    </div>
 
-  <h2>好きな絵</h2>
-  <div class="radiobox">
-    <%= form.radio_button :picture_mode, 1, id: "radio3",class: "custom-radio" %>
-    <%= form.label :picture_mode_1, "どうぶつ🐕", class: "picture-mode", for: "radio3" %>
-    <%= form.radio_button :picture_mode, 2, id: "radio4",class: "custom-radio" %>
-    <%= form.label :picture_mode_2, "さかな🐟", class: "picture-mode", for: "radio4" %>
-    <%= form.radio_button :picture_mode, 3, id: "radio5",class: "custom-radio" %>
-    <%= form.label :picture_mode_3, "きょうりゅう🦕", class: "picture-mode", for: "radio5" %>
-  </div>
+    <h2>好きな絵</h2>
+    <div class="radiobox">
+      <%= form.radio_button :picture_mode, 1, id: "radio3",class: "custom-radio" %>
+      <%= form.label :picture_mode_1, "どうぶつ🐕", class: "picture-mode", for: "radio3" %>
+      <%= form.radio_button :picture_mode, 2, id: "radio4",class: "custom-radio" %>
+      <%= form.label :picture_mode_2, "さかな🐟", class: "picture-mode", for: "radio4" %>
+      <%= form.radio_button :picture_mode, 3, id: "radio5",class: "custom-radio" %>
+      <%= form.label :picture_mode_3, "きょうりゅう🦕", class: "picture-mode", for: "radio5" %>
+    </div>
 
-
-  <h2>レベル</h2>
-  <div class="radiobox">
-    <%= form.radio_button :level_mode, 1, id: "radio6",class: "custom-radio " %>
-    <%= form.label :level_mode_1, "やさしい😃", class: "level-mode", for: "radio6" %>
-    <%= form.radio_button :level_mode, 2, id: "radio7",class: "custom-radio" %>
-    <%= form.label :level_mode_2, "ふつう😆", class: "level-mode", for: "radio7" %>
-    <%= form.radio_button :level_mode, 3, id: "radio8",class: "custom-radio" %>
-    <%= form.label :level_mode_3, "むずかしい😂", class: "level-mode", for: "radio8" %>
-  </div>
-
-  <%= form.submit "このモードで遊ぶ" %>
-<% end %>
+    <h2>レベル</h2>
+    <div class="radiobox">
+      <%= form.radio_button :level_mode, 1, id: "radio6",class: "custom-radio " %>
+      <%= form.label :level_mode_1, "やさしい😃", class: "level-mode", for: "radio6" %>
+      <%= form.radio_button :level_mode, 2, id: "radio7",class: "custom-radio" %>
+      <%= form.label :level_mode_2, "ふつう😆", class: "level-mode", for: "radio7" %>
+      <%= form.radio_button :level_mode, 3, id: "radio8",class: "custom-radio" %>
+      <%= form.label :level_mode_3, "むずかしい😂", class: "level-mode", for: "radio8" %>
+    </div>
+  
+    <%= form.submit "このモードで遊ぶ" %>
+  <% end %>
+  <div> 
  <script> //javascriptにデータを渡す。
     play_mode = "<%= @mode.play_mode %>"
     pic_mode = "<%= @mode.picture_mode %>"
     level_mode = "<%= @mode.level_mode %>"
  </script>   
+
+
 </body>
 </html>
