@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ビンゴ</title>
+    <%= stylesheet_link_tag 'bingo_ruret', :media => "all" %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<% content_for :js do %>
+        <%= javascript_import_module_tag "bingo_ruret2" %>
+    <% end %>
+</head>
+<body>
+    <div class="container">
+        <!-- ビンゴカード -->
+
+        <div class="bingo">
+            <div class="bingo-heading">
+                <h2>スタートボタンを押してね</h2>
+            </div>
+            <div class="card">
+                <div class="outer"  id="outer">
+                </div>
+            </div>
+        </div>
+        <!-- ルーレット -->
+        <div class="roulette">
+            <div class="ruret_text">
+                <h2>ハムスター</h2>
+            </div>
+            <div class="square2">
+            <img id="result" class="result centering" src=<%= asset_path('animal/1.png') %> alt="result image">
+            </div>
+            <button id="button" class="button">START</button>
+        </div>
+
+    </div>
+    
+    <script> //javascriptにデータを渡す。
+        mass = <%= raw @mass.to_json %>;
+        images = <%= raw @pictures.to_json %>;
+        names = <%= raw @names.to_json %>;
+        //const imagePath = "<%= asset_path('animal/1.png') %>";
+        imagePaths = <%= raw @image_paths.map { |path| "#{path}" }.to_json %>;
+        imagePathsArray = <%= raw @image_paths.map { |path| asset_path("#{path}") }.to_json %>;
+    </script>
+
+</body>
+</html>

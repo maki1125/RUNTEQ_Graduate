@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" /> 
+  <title>collection</title>
+  <%= stylesheet_link_tag 'collection_index', :media => "all" %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <% content_for :js do %>
+    <%= javascript_import_module_tag "index" %>
+  <% end %>
+</head>
+<body>
+  <div class="container">
+    <h1>コレクション</h1>
+    <div class="btnWrapper">
+      <button class="btn1" id="animal">どうぶつ</button>
+      <button class="btn1" id="fish">さかな</button>
+      <button class="btn1" id="dinosaur">きょうりゅう</button>
+    </div>
+
+    <div class="col_card"  id="col_card">
+    </div>
+
+    <div class="btnWrapper">
+      <button class="btn2" id="pg1">1</button>
+      <button class="btn2">2</button>
+      <button class="btn2">3</button>
+      <button class="btn2">4</button>
+      <button class="btn2">5</button>
+    </div>
+  </div>
+  
+  <script> //javascriptにデータを渡す。
+    pic_mode = "<%= @favorite_btn %>"
+    //1.動物
+    allanimal_img = <%= raw @allanimal_img.map { |path| asset_path("#{path}") }.to_json %>;
+    colanimal_img = <%= raw @colanimal_img.map { |path| "#{path}" }.to_json %>;
+    colanimal_imgass = <%= raw @colanimal_img.map { |path| asset_path("#{path}") }.to_json %>;
+    //2.魚
+    allfish_img = <%= raw @allfish_img.map { |path| asset_path("#{path}") }.to_json %>;
+    colfish_img = <%= raw @colfish_img.map { |path| "#{path}" }.to_json %>;
+    colfish_imgass = <%= raw @colfish_img.map { |path| asset_path("#{path}") }.to_json %>;
+    //3.恐竜
+    alldinosaur_img = <%= raw @alldinosaur_img.map { |path| asset_path("#{path}") }.to_json %>;
+    coldinosaur_img = <%= raw @coldinosaur_img.map { |path| "#{path}" }.to_json %>;
+    coldinosaur_imgass = <%= raw @coldinosaur_img.map { |path| asset_path("#{path}") }.to_json %>;
+    //はてなマーク
+    question_imgass = "<%= asset_path("question101.png") %>";
+
+    </script>
+
+</body>
+</html>

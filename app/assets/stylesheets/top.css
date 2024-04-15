@@ -1,0 +1,112 @@
+/*commonとは別にcontainerを設定しないと要素が横に並ぶため個別に設定*/
+.container {
+  display: flex; /* 要素をフレックスコンテナーとして表示 */
+  flex-direction: column; /* 要素を縦に並べる */
+  justify-content: center; /* 垂直方向の中央揃え */
+  align-items: center;/* 水平方向の中央揃え */
+  margin-top: 100px; /* ヘッダーの高さ分のマージンを追加 */
+  margin-bottom: 100px; /* フッターの高さ分のマージンを追加 */
+}
+.top-para {
+  margin: 50px 0px 50px 0px; /* 左右の余白を自動で均等に設定し、要素を中央に配置 */
+}
+
+.top-para h1 {
+  margin-bottom: 20px; /* h1要素の下に余白を追加 */
+  color: white;
+}
+.main p {
+  font-size:15px;
+  text-align: center;
+}
+.main h1{
+  color:black;
+}
+.main {
+  margin-top:100px;
+  margin-bottom: 150px;
+  text-align: center;
+}
+
+video{
+  border: 1px solid #555555;
+  border-radius: 15px;
+}
+.description{
+  width:400px;
+}
+.description p{
+  text-align: left;
+}
+.set {
+  display: flex; /* 要素をフレックスコンテナーとして表示 */
+  justify-content: center; /* 垂直方向の中央揃え */
+  align-items: center;/* 水平方向の中央揃え */
+}
+
+.anime {
+  position: relative;
+}
+.move-right {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top:350px;
+  animation: moveRight 5s linear infinite;
+}
+@keyframes moveRight {
+  0% {transform: translateX(-1000%);}
+  100% {transform: translateX(1000%);}
+}
+.move-left {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top:400px;
+  animation: moveLeft 10s linear infinite;
+}
+@keyframes moveLeft {
+  0% {transform: translateX(1000%);}
+  100% {transform: translateX(-1000%);}
+}
+.bird{
+  margin-top:20px;
+  animation: moveLeft 10s linear infinite;
+}
+.poyooon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top:450px;
+  margin-left:150px;
+  animation: poyooon 1s linear infinite;
+}
+@keyframes poyooon {
+  0%   { transform: scale(1.0, 1.0) translate(0%, 0%); }
+  10%  { transform: scale(1.1, 0.9) translate(0%, 5%); }
+  40%  { transform: scale(1.2, 0.8) translate(0%, 15%); }
+  50%  { transform: scale(1.0, 1.0) translate(0%, 0%); }
+  60%  { transform: scale(0.9, 1.2) translate(0%, -100%); }
+  75%  { transform: scale(0.9, 1.2) translate(0%, -20%); }
+  85%  { transform: scale(1.2, 0.8) translate(0%, 15%); }
+  100% { transform: scale(1.0, 1.0) translate(0%, 0%); }
+}
+
+.pudding {
+  --easeInOutExpo: cubic-bezier(0.87, 0, 0.13, 1);
+  animation-name: puddingScale, puddingMove;
+  animation-duration: 0.25s, 3s;
+  animation-timing-function: var(--easeInOutExpo), linear;
+  animation-iteration-count: infinite, infinite;
+  animation-direction: alternate, normal;
+}
+@keyframes puddingScale {
+  0% {scale: 1 0.8;}
+  100% {scale: 0.8 1.2;}
+}
+
+@keyframes puddingMove {
+  0% {translate: -70% 0;}
+  100% {translate: 70% 0;}
+}
+

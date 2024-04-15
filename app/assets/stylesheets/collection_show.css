@@ -1,0 +1,21 @@
+.LeftContent {
+  display: flex;
+  flex-direction: column; /* 要素を縦に配置する */
+  align-items: center; /* 要素を中央揃えにする */
+  margin: 0 30px 0 0;
+}
+.LeftContent p{
+  font-size:30px
+}
+.square{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:250px;
+  height:250px;
+}
+.square img {
+  /* 画像のスタイル */
+  max-width: 80%; /* 画像の最大幅をマスの幅に合わせる */
+  max-height: 80%; /* 画像の最大高さをマスの高さに合わせる */
+}

@@ -1,0 +1,22 @@
+<header>
+  <h1>お問合せフォーム</h1>
+</header>
+<div id="form">
+
+  <div class="fish" id="fish"></div>
+  <div class="fish" id="fish2"></div>
+
+  <div id="waterform">
+    <%= form_with model:@contact do |f| %>
+      <div class="formgroup" id="name-form">
+        <%= f.label :name,"✿  ネーム" %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="formgroup" id="message-form">
+        <%= f.label :message,"✿  メッセージ" %>
+        <%= f.text_area :message %>
+      </div>
+      <%= f.submit 'そうしん' %>
+    <% end %>
+  </div>
+</div>

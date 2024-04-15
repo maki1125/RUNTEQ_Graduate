@@ -1,0 +1,38 @@
+h1{
+  text-align: center;
+}
+h2{
+  text-align: left;
+}
+.radiobox {
+  display: flex;
+  width: 500px;
+  /*max-width: 2000px;*/
+}
+
+label {
+  background-color: #b9deff;
+  color: black;
+  padding: 10px 10px;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 1000px;
+  font-size: 15px;
+
+}
+
+.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* ラジオボタンの非表示 */
+.custom-radio {
+  display: none;
+}
+
+.mode-footer{
+  display: none;
+}

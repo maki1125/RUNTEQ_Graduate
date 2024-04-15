@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" /> 
+  <title>top</title>
+  <%= stylesheet_link_tag "top", :media => "all" %>
+</head>
+<body>
+
+<div class="container">
+<div class="anime">
+
+   <%= image_tag 'bird.png', size: '40x40', class: 'move-left bird' %>
+   <%= image_tag 'animal/6.png', size: '40x40', class: 'poyooon' %>
+</div>
+
+
+  <div class='top-para main'>
+    <h1>どうぶつビンゴ</h1>
+    <p>100種類の動物が登場（予定）！！
+    <br>遊びながら動物を学べて知育にピッタリ！
+    <br>親子の楽しい時間を提供します。
+    </p>
+    <%= button_to "さっそく遊ぶ", {controller: 'bingo', action: 'play'}, method: :get,  class: "btn" %>
+    
+  </div>
+  
+
+  <div class='top-para'>
+    <h1 class="text-center">遊び方</h1>
+    <div class="row set">
+      <div class="col-md-6">
+        <video width="300" height="200" controls autoplay loop muted >
+          <source src="/videos/mov1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="description col-md-6">
+          <p>①<span style="color: red;">STARTボタン</span>でルーレットスタート！</p>
+          <p>②カードの中の同じ動物を<span style="color: red;">クリック</span>しよう！</p>
+          <p>③縦・横・斜めを揃えたら<span style="color: red;">ビンゴ</span>！</p>
+      </div>
+    </div>  
+  </div>
+
+  <div class='top-para'>
+    <h1 class="text-center">コレクション機能</h1>
+    <div class="row set">
+      <div class="video col-md-6">
+        <!-- 動画の埋め込みコードなど -->
+        <video width="300" height="200" controls autoplay loop muted >
+          <source src="/videos/mov2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="description col-md-6">
+          <p>・この機能は<span style="color: red;">ログイン</span>したら使えるよ！</p>
+          <p>・ビンゴした動物を<span style="color: red;">集める</span>ことができるよ！</p>
+          <p>・集めた動物の<span style="color: red;">動画</span>を見ることができるよ！</p>
+      </div>
+    </div>
+  </div>
+
+  <div class='top-para'>
+    <h1 class="text-center">モード選択機能</h1>
+    <div class="row set">
+      <div class="video col-md-6">
+        <video width="300" height="200" controls autoplay loop muted >
+          <source src="/videos/mov3.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="description col-md-6">
+        <p>・この機能は<span style="color: red;">ログイン</span>したら使えるよ！</p>
+        <p>・<span style="color: red;">対決</span>することができるよ！（準備中）</p>
+        <p>・動物以外に<span style="color: red;">魚と恐竜</span>のビンゴができるよ！</p>
+        <p>・<span style="color: red;">難しさ</span>を選べるよ！</p>
+      </div>
+    </div>
+  </div>
+  <%= button_to "さっそく遊ぶ", {controller: 'bingo', action: 'play'}, method: :get,  class: "btn" %>
+</div>
+</div>
+
+</body>
+</html>

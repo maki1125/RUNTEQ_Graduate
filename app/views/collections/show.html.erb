@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" /> 
+  <title>details</title>
+  <%= stylesheet_link_tag 'collection_show', :media => "all" %>
+  <% content_for :js do %>
+    <%= javascript_import_module_tag "show" %>
+  <% end %>
+</head>
+<body>
+  <div class="container">
+    <div class="LeftContent">
+      <p id="name"><%= @animal.name %></p>
+      <div class="square">
+      <%= image_tag @animal.img %>
+      </div>
+      <button onclick="window.history.back();" id="back" class="btn">戻る</button>
+    </div>
+    <div class="RightContent">
+      <iframe width="560" height="315" 
+      src="<%= @animal.youtube_url %>"
+      title="YouTube video player" frameborder="0" allow="accelerometer; 
+      autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</body>
