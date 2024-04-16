@@ -50,11 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['APP_DATABASE'] %>
-  username: <%= ENV['APP_DATABASE_USERNAME'] %>
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
-  host: <%= ENV['APP_DATABASE_HOST']%>
-
   #database: animalbingo_app2_production
   #username: animalbingo_app2
   #password: <%= ENV["ANIMALBINGO_APP2_DATABASE_PASSWORD"] %>
