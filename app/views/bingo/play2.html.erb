@@ -1,13 +1,61 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>対決</title>
-  </head>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ビンゴ</title>
+    <%= stylesheet_link_tag 'bingo_ruret', :media => "all" %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<% content_for :js do %>
+        <%= javascript_import_module_tag "bingo_ruret2" %>
+    <% end %>
+</head>
+<body>
+    <div class="container">
+        <!-- ビンゴカード1 -->
 
-  <body>
-    <div class="container" style="flex-direction: column;">
-    <h1>対決モードは準備中です！</h1>
-    <%= link_to "モード選択に戻る", new_mode_path, class: "btn" %>
+        <div class="bingo">
+            <div class="bingo-heading">
+                <h2>スタートボタンを押してね</h2>
+            </div>
+            <div class="card">
+                <div class="outer"  id="outer">
+                </div>
+            </div>
+        </div>
+        <!-- ルーレット -->
+        <div class="roulette">
+            <div class="ruret_text">
+                <h2>ハムスター</h2>
+            </div>
+            <div class="square2">
+            <img id="result" class="result centering" src=<%= asset_path('animal/1.png') %> alt="result image">
+            </div>
+            <button id="button" class="button">START</button>
+        </div>
+        <!-- ビンゴカード2 -->
+
+        <div class="bingo">
+            <div class="bingo-heading">
+                <h2>スタートボタンを押してね</h2>
+            </div>
+            <div class="card">
+                <div class="outer"  id="outer2">
+                </div>
+            </div>
+        </div>
+
     </div>
-  </body>
+    
+    <script> //javascriptにデータを渡す。
+        play_mode = <%= raw @play_btn.to_json %>;
+        mass = <%= raw @mass.to_json %>;
+        images = <%= raw @pictures.to_json %>;
+        names = <%= raw @names.to_json %>;
+        //const imagePath = "<%= asset_path('animal/1.png') %>";
+        imagePaths = <%= raw @image_paths.map { |path| "#{path}" }.to_json %>;
+        imagePathsArray = <%= raw @image_paths.map { |path| asset_path("#{path}") }.to_json %>;
+        imagePathsArray2 = <%= raw @image_paths2.map { |path| asset_path("#{path}") }.to_json %>;
+    </script>
+
+</body>
 </html>

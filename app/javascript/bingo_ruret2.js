@@ -1,7 +1,10 @@
+"use strict"; //iphoneでjavascriptエラーの対処。
+
 const MASS = mass;
 const squareWidth = 100 / MASS; // カラム数に基づいたマスの幅
 let squareIdCounter = 0; // マスのID用のカウンターを初期化
 let outer = document.getElementById('outer'); //htmlに設定
+//let outer2 = document.getElementById('outer2'); //htmlに設定
 let name_card; //クリックしたビンゴますのID ID番号-動物の名前
 let name; //クリックした動物の名前
 let index; //クリックしたビンゴマスのID番号
@@ -12,62 +15,73 @@ let num=MASS*MASS; //カードの中のまだクリックしていないマス�
 let name_ruret; //カードの処理でも使いたいためここで宣言。
 let names2 = names;
 let images = imagePathsArray;
+//let images2 = imagePathsArray2; //2枚目用
 let random; //ビンゴカードのところで使用する。
+//console.log(images);
+//console.log(images2)
+
 
 // ビンゴカード作成
-for(let i = 0; i < MASS * MASS; i++){// 画像をマス上に表示
-    let divSquare = document.createElement('div');//セルのdiv要素作成。
-    divSquare.classList.add('square'); //作成したセルにsquareクラスを追加。
-    let div = document.createElement('div');//セル内に画像を配置するためのdiv要素作成。
-    let img = document.createElement('img');//img要素の作成。
-    img.src = imagePathsArray[i]; // 画像のパスを設定.htmlで変数作成。
-    div.appendChild(img);//div要素の中にimg要素を追加。
-    divSquare.appendChild(div)
-    outer.appendChild(divSquare);
-    divSquare.setAttribute('id', `${squareIdCounter}-${names[i]}`);
-    squareIdCounter++; // カウンターをインクリメント
-    divSquare.addEventListener('click', function(event) {// .square 要素に対して直接クリックイベントを設定
-        name_card = event.currentTarget.id; // クリックされた要素のIDを取得
-        const imgsrc = event.currentTarget.src; // クリックされた要素のIDを取得
-        index = name_card.substr(0,name_card.indexOf("-")); //クリックしたマスのID取得。
-        name = name_card.substr(name_card.indexOf("-")+1,10); //クリックしたマスのどうぶつ名取得。
-        var x = index%MASS;
-        var y = Math.floor(index/MASS);
-        //ルーレットの動物と一致しているか確認
-        if (name_ruret==name_card.substr(name_card.indexOf("-")+1,10)){ //動物名だけ抜き出す。
-            headingElement.textContent = "正解！";// テキストを変更
-            divSquare.classList.add('gray'); divSquare.onclick = null;//色をつける
-            if (del==0){ //1回だけ削除するため
-                names2.splice(random,1) //クリックされたものは、ルーレットの一覧から削除していく。
-                images.splice(random,1) //クリックされたものは、ルーレットの一覧から削除していく。
-                del=1;
-                num -= 1;
+function createBingoCard(outer, images){
+    for(let i = 0; i < MASS * MASS; i++){// 画像をマス上に表示
+        let divSquare = document.createElement('div');//セルのdiv要素作成。
+        divSquare.classList.add('square'); //作成したセルにsquareクラスを追加。
+        let div = document.createElement('div');//セル内に画像を配置するためのdiv要素作成。
+        let img = document.createElement('img');//img要素の作成。
+        img.src = images[i]; // 画像のパスを設定.htmlで変数作成。
+        div.appendChild(img);//div要素の中にimg要素を追加。
+        divSquare.appendChild(div)
+        outer.appendChild(divSquare);
+        divSquare.setAttribute('id', `${squareIdCounter}-${names[i]}`);
+        squareIdCounter++; // カウンターをインクリメント
+        divSquare.addEventListener('click', function(event) {// .square 要素に対して直接クリックイベントを設定
+            name_card = event.currentTarget.id; // クリックされた要素のIDを取得
+            const imgsrc = event.currentTarget.src; // クリックされた要素のIDを取得
+            index = name_card.substr(0,name_card.indexOf("-")); //クリックしたマスのID取得。
+            name = name_card.substr(name_card.indexOf("-")+1,10); //クリックしたマスのどうぶつ名取得。
+            var x = index%MASS;
+            var y = Math.floor(index/MASS);
+            //ルーレットの動物と一致しているか確認
+            //console.log("クリックした動物",name_card.substr(name_card.indexOf("-")+1,10));
+            //console.log("ルーレットの動物",name_ruret);
+            if (name_ruret==name_card.substr(name_card.indexOf("-")+1,10)){ //動物名だけ抜き出す。
+                headingElement.textContent = "正解！";// テキストを変更
+                divSquare.classList.add('gray'); divSquare.onclick = null;//色をつける
+                if (del==0){ //1回だけ削除するため
+                    names2.splice(random,1) //クリックされたものは、ルーレットの一覧から削除していく。
+                    images.splice(random,1) //クリックされたものは、ルーレットの一覧から削除していく。
+                    del=1;
+                    num -= 1;
+                }
+                checkBingo(); //ビンゴかチェックする。
+                if (bingoAchieved) {
+                    headingElement.textContent = "ビンゴ！！";// テキストを変更
+                    animateBingoImages(); //動物を回転させる。
+                    // ボタン要素を取得する
+                    const button = document.getElementById('button'); // もしくは適切なセレクタでquerySelectorを使用して取得する
+                    button.textContent = "また遊ぶ";// ボタンのテキストを変更する
+                    button.style.backgroundColor = "orange";
+                }else{ //まだビンゴにならない時にうんうんの動作
+                    $(div).animate({top: '+=20'},100);//左右に振るわせる。
+                    $(div).animate({top: '-=40'},100);
+                    $(div).animate({top: '+=40'},100);
+                    $(div).animate({top: '-=40'},100);
+                    $(div).animate({top: '+=20'},100);
+                };
+            }else{
+                headingElement.textContent = "違うよ、、、";// テキストを変更
+                $(div).animate({left: '+=20'},100);//左右に振るわせる。
+                $(div).animate({left: '-=40'},100);
+                $(div).animate({left: '+=40'},100);
+                $(div).animate({left: '-=40'},100);
+                $(div).animate({left: '+=20'},100);
             }
-            checkBingo(); //ビンゴかチェックする。
-            if (bingoAchieved) {
-                headingElement.textContent = "ビンゴ！！";// テキストを変更
-                animateBingoImages(); //動物を回転させる。
-                // ボタン要素を取得する
-                const button = document.getElementById('button'); // もしくは適切なセレクタでquerySelectorを使用して取得する
-                button.textContent = "また遊ぶ";// ボタンのテキストを変更する
-                button.style.backgroundColor = "orange";
-            }else{ //まだビンゴにならない時にうんうんの動作
-                $(div).animate({top: '+=20'},100);//左右に振るわせる。
-                $(div).animate({top: '-=40'},100);
-                $(div).animate({top: '+=40'},100);
-                $(div).animate({top: '-=40'},100);
-                $(div).animate({top: '+=20'},100);
-            };
-        }else{
-            headingElement.textContent = "違うよ、、、";// テキストを変更
-            $(div).animate({left: '+=20'},100);//左右に振るわせる。
-            $(div).animate({left: '-=40'},100);
-            $(div).animate({left: '+=40'},100);
-            $(div).animate({left: '-=40'},100);
-            $(div).animate({left: '+=20'},100);
-        }
-    });
-}
+        });
+    }
+};
+//createBingoCard(outer2, images2);
+createBingoCard(outer, images);
+
 
 //ビンゴカードの並びの設定
 $('.square').css('flex', `0 0 ${squareWidth}%`);
@@ -92,49 +106,47 @@ window.onload = function() {
 };
 
 //ルーレットの処理
-$(function () {
+rouletteProcessing();
+function rouletteProcessing() {
     var timer;
     //var random;
     // START・STOPボタンクリックのイベント
-    $("#button").on("click", function () {
-        del=0; //削除の履歴をクリアする。
+    document.getElementById("button").addEventListener("click", function () {
+        del = 0; //削除の履歴をクリアする。
         //また遊ぶ
-        if ($(this).text() == "また遊ぶ") {
-            window.location.href = "/bingo"
-            
+        if (this.textContent == "また遊ぶ") {
+            window.location.href = "/bingo";
         };
         // START
-        if ($(this).text() == "START") {
+        if (this.textContent == "START") {
             // ボタンのテキストを"STOP"に変更
-            $(this).text("STOP").css("background-color", "red");
-            headingElement.textContent = "stopボタンを押してね";// テキストを変更
+            this.textContent = "STOP";
+            this.style.backgroundColor = "red";
+            headingElement.textContent = "stopボタンを押してね"; // テキストを変更
             // ルーレットタイマーを設定
             timer = setInterval(function () {
-                random = Math.floor(Math.random() * images.length);
-                $("#result").attr("src",images[random]);
-                headingElement2.textContent = names2[random];// テキストを変更
+                random = Math.floor(Math.random() * images.length);//0~images.length-1の範囲の整数を生成。
+                document.getElementById("result").setAttribute("src", images[random]);
+                headingElement2.textContent = names2[random]; // テキストを変更
             }, 50);
-        // STOP
+            // STOP
         } else {
-            $(this).text("START").css("background-color", "green");// ボタンのテキストを"START"に変更
-            clearInterval(timer);// ルーレットタイマーを停止
-            var result = images[random];// 停止時の数字を結果に反映
-            //console.log(images[random]);
-            //console.log(names[random]);
+            this.textContent = "START";
+            this.style.backgroundColor = "green"; // ボタンのテキストを"START"に変更
+            clearInterval(timer); // ルーレットタイマーを停止
+            var result = images[random]; // 停止時の数字を結果に反映
             name_ruret = names2[random]; //ルーレットででた動物の名前
-            
-            //console.log(name_ruret);
-            //console.log(names.slice(0,9).includes(name_ruret));
-            var aru = names2.slice(0,num).includes(name_ruret); //カードの中に、ルーレットの動物がいるか確認。
+            console.log(name_ruret);
+            var aru = names2.slice(0, num).includes(name_ruret); //カードの中に、ルーレットの動物がいるか確認。
             if (aru) {
-                headingElement.textContent = "どこかな？";// テキストを変更
-            }else{
-                headingElement.textContent = "いないね、、、";// テキストを変更
+                headingElement.textContent = "どこかな？"; // テキストを変更
+            } else {
+                headingElement.textContent = "いないね、、、"; // テキストを変更
             }
-            headingElement2.textContent = names2[random];// テキストを変更
+            headingElement2.textContent = names2[random]; // テキストを変更
         }
     });
-});
+}
 
 //ビンゴか確認する
 function checkBingo() {

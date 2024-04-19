@@ -1,0 +1,167 @@
+I, [2024-04-18T09:30:23.127200 #1]  INFO -- : [3a7159b1-6216-46f8-bb06-06cd9dbb477b] Started GET "/" for 172.22.0.1 at 2024-04-18 09:30:23 +0900
+I, [2024-04-18T09:30:23.131983 #1]  INFO -- : [3a7159b1-6216-46f8-bb06-06cd9dbb477b] Processing by StaticPagesController#top as HTML
+I, [2024-04-18T09:30:25.718248 #1]  INFO -- : [3a7159b1-6216-46f8-bb06-06cd9dbb477b]   Rendered static_pages/top.html.erb within layouts/application (Duration: 2570.8ms | Allocations: 232523)
+I, [2024-04-18T09:30:25.734648 #1]  INFO -- : [3a7159b1-6216-46f8-bb06-06cd9dbb477b]   Rendered layout layouts/application.html.erb (Duration: 2587.3ms | Allocations: 255711)
+I, [2024-04-18T09:30:25.734976 #1]  INFO -- : [3a7159b1-6216-46f8-bb06-06cd9dbb477b] Completed 200 OK in 2603ms (Views: 2589.6ms | ActiveRecord: 0.0ms | Allocations: 257198)
+I, [2024-04-18T09:30:25.749487 #1]  INFO -- : [e39c6e7a-a4cc-4f4a-a8a1-496855668bfb] Started GET "/assets/top-0bde369142801eb0f1502d4949d75bca52b6a3eab286a294d3f480ea8710ee94.css" for 172.22.0.1 at 2024-04-18 09:30:25 +0900
+I, [2024-04-18T09:30:25.758399 #1]  INFO -- : [9c9e492d-f572-4ed8-a558-a1120f7159f1] Started GET "/assets/common-637911dc91b1a9d8293d2b0ebe65be1dad96521e05c3d66fb5d35814fbd4350b.css" for 172.22.0.1 at 2024-04-18 09:30:25 +0900
+I, [2024-04-18T09:30:25.761517 #1]  INFO -- : [cff3b233-e612-4921-9de1-808c15b7849e] Started GET "/assets/turbo.min-918a6cf2f2be8ed9555c9a11eee69c7dc2f01770802815576efc931876b327fb.js" for 172.22.0.1 at 2024-04-18 09:30:25 +0900
+I, [2024-04-18T09:30:25.767434 #1]  INFO -- : [4ea9afcf-f65b-4945-a9ea-71ea28c84fca] Started GET "/assets/stimulus.min-dd364f16ec9504dfb72672295637a1c8838773b01c0b441bd41008124c407894.js" for 172.22.0.1 at 2024-04-18 09:30:25 +0900
+I, [2024-04-18T09:30:25.764521 #1]  INFO -- : [adffb441-e3c7-4d66-b3f0-9698e802e77b] Started GET "/assets/bird-be1d96761380a4db40bc2a6518e41e091ac9baf600df124db0547543b9662ed4.png" for 172.22.0.1 at 2024-04-18 09:30:25 +0900
+I, [2024-04-18T09:30:25.768318 #1]  INFO -- : [82ba75a4-a486-458b-9ace-be21014c3935] Started GET "/assets/animal/6-b8618f7dc481d86518c1bcab9d366cf190abdedd532d21782990a00535c30ea9.png" for 172.22.0.1 at 2024-04-18 09:30:25 +0900
+I, [2024-04-18T09:30:25.795604 #1]  INFO -- : [9ef5f1d3-acd7-44aa-91d6-b48da5535e67] Started GET "/assets/background-ec5e3f552f022fd2a831f7a1d118dc59df4c7ebb0ec33a2aa603f3a6bda4ef72.jpg" for 172.22.0.1 at 2024-04-18 09:30:25 +0900
+I, [2024-04-18T09:30:30.677182 #1]  INFO -- : [ee60d974-ed7f-4dba-b6f3-7a9c79d59aa0] Started GET "/bingo" for 172.22.0.1 at 2024-04-18 09:30:30 +0900
+I, [2024-04-18T09:30:30.682123 #1]  INFO -- : [ee60d974-ed7f-4dba-b6f3-7a9c79d59aa0] Processing by BingoController#play as HTML
+I, [2024-04-18T09:30:30.740023 #1]  INFO -- : [ee60d974-ed7f-4dba-b6f3-7a9c79d59aa0] Completed 500 Internal Server Error in 57ms (ActiveRecord: 20.5ms | Allocations: 2349)
+F, [2024-04-18T09:30:30.741141 #1] FATAL -- : [ee60d974-ed7f-4dba-b6f3-7a9c79d59aa0]   
+[ee60d974-ed7f-4dba-b6f3-7a9c79d59aa0] ActiveRecord::StatementInvalid (Mysql2::Error: No database selected):
+[ee60d974-ed7f-4dba-b6f3-7a9c79d59aa0]   
+[ee60d974-ed7f-4dba-b6f3-7a9c79d59aa0] app/controllers/bingo_controller.rb:34:in `play'
+I, [2024-04-18T09:30:43.538992 #1]  INFO -- : [7cd3a0fb-5d87-4037-8e02-9601a698a3b7] Started GET "/login" for 172.22.0.1 at 2024-04-18 09:30:43 +0900
+I, [2024-04-18T09:30:43.540795 #1]  INFO -- : [7cd3a0fb-5d87-4037-8e02-9601a698a3b7] Processing by UserSessionsController#new as HTML
+I, [2024-04-18T09:30:43.543850 #1]  INFO -- : [7cd3a0fb-5d87-4037-8e02-9601a698a3b7] Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.9ms | Allocations: 630)
+F, [2024-04-18T09:30:43.544310 #1] FATAL -- : [7cd3a0fb-5d87-4037-8e02-9601a698a3b7]   
+[7cd3a0fb-5d87-4037-8e02-9601a698a3b7] ActiveRecord::StatementInvalid (Mysql2::Error: No database selected):
+[7cd3a0fb-5d87-4037-8e02-9601a698a3b7]   
+[7cd3a0fb-5d87-4037-8e02-9601a698a3b7] app/controllers/user_sessions_controller.rb:5:in `new'
+I, [2024-04-18T09:30:53.271799 #1]  INFO -- : [7b5f2571-fc9f-4a07-91ec-c032f7921ff6] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:30:53 +0900
+I, [2024-04-18T09:30:53.275602 #1]  INFO -- : [8ad10388-7733-482d-bee9-da5d40388757] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:30:53 +0900
+I, [2024-04-18T09:30:55.765059 #1]  INFO -- : [745ba739-e00e-418c-8cd5-f837c0ce694b] Started GET "/bingo" for 172.22.0.1 at 2024-04-18 09:30:55 +0900
+I, [2024-04-18T09:30:55.765783 #1]  INFO -- : [745ba739-e00e-418c-8cd5-f837c0ce694b] Processing by BingoController#play as HTML
+I, [2024-04-18T09:30:55.767268 #1]  INFO -- : [745ba739-e00e-418c-8cd5-f837c0ce694b] Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.4ms | Allocations: 448)
+F, [2024-04-18T09:30:55.767638 #1] FATAL -- : [745ba739-e00e-418c-8cd5-f837c0ce694b]   
+[745ba739-e00e-418c-8cd5-f837c0ce694b] ActiveRecord::StatementInvalid (Mysql2::Error: No database selected):
+[745ba739-e00e-418c-8cd5-f837c0ce694b]   
+[745ba739-e00e-418c-8cd5-f837c0ce694b] app/controllers/bingo_controller.rb:34:in `play'
+I, [2024-04-18T09:31:00.304092 #1]  INFO -- : [958fba1e-6417-42cb-85a0-145cd6693134] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:31:00 +0900
+I, [2024-04-18T09:31:00.313266 #1]  INFO -- : [e00f19cb-e072-4b25-886f-436b45bbd314] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:31:00 +0900
+I, [2024-04-18T09:31:00.320266 #1]  INFO -- : [3a25ddd8-eade-4ffc-9595-6882eb087a76] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:31:00 +0900
+I, [2024-04-18T09:31:00.323077 #1]  INFO -- : [b32b81ba-10cd-4ce7-ab9e-ee4159c2c829] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:31:00 +0900
+I, [2024-04-18T09:31:00.326463 #1]  INFO -- : [a852a79e-4009-4d04-8de2-12dab9ab2481] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:31:00 +0900
+I, [2024-04-18T09:31:00.516612 #1]  INFO -- : [543dd4c2-d11e-4867-8f46-62ac660f2c75] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:31:00 +0900
+I, [2024-04-18T09:37:02.466021 #1]  INFO -- : [16b062f9-86ef-481a-b79a-2f331fdd904b] Started GET "/" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.476728 #1]  INFO -- : [16b062f9-86ef-481a-b79a-2f331fdd904b] Processing by StaticPagesController#top as HTML
+I, [2024-04-18T09:37:02.518674 #1]  INFO -- : [16b062f9-86ef-481a-b79a-2f331fdd904b]   Rendered static_pages/top.html.erb within layouts/application (Duration: 34.3ms | Allocations: 1410)
+I, [2024-04-18T09:37:02.527593 #1]  INFO -- : [16b062f9-86ef-481a-b79a-2f331fdd904b]   Rendered layout layouts/application.html.erb (Duration: 43.6ms | Allocations: 3203)
+I, [2024-04-18T09:37:02.528441 #1]  INFO -- : [16b062f9-86ef-481a-b79a-2f331fdd904b] Completed 200 OK in 51ms (Views: 47.7ms | ActiveRecord: 0.0ms | Allocations: 3455)
+I, [2024-04-18T09:37:02.555810 #1]  INFO -- : [7e09a581-130c-48bc-9344-c730b0ef6579] Started GET "/assets/top-0bde369142801eb0f1502d4949d75bca52b6a3eab286a294d3f480ea8710ee94.css" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.569338 #1]  INFO -- : [dbbd53aa-4cc5-4df3-a79a-1f75e1beaaa8] Started GET "/assets/common-637911dc91b1a9d8293d2b0ebe65be1dad96521e05c3d66fb5d35814fbd4350b.css" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.575187 #1]  INFO -- : [8050402d-1e67-4938-a66e-66c7c6a5b859] Started GET "/assets/stimulus.min-dd364f16ec9504dfb72672295637a1c8838773b01c0b441bd41008124c407894.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.576429 #1]  INFO -- : [a1385f91-0ff1-49c9-b880-0c2d5f207a95] Started GET "/assets/bingo_ruret2-44f5f90740b5759f80c6aadaaabda2503a6991883749ff4eb83e61032ca9fb0f.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.571279 #1]  INFO -- : [db6f4443-aae5-4e52-a9b1-7ce6e45d7139] Started GET "/assets/turbo.min-918a6cf2f2be8ed9555c9a11eee69c7dc2f01770802815576efc931876b327fb.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.580876 #1]  INFO -- : [c7fa2335-5794-4a7e-9802-62e52eddf576] Started GET "/assets/stimulus-loading-3576ce92b149ad5d6959438c6f291e2426c86df3b874c525b30faad51b0d96b3.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.589124 #1]  INFO -- : [d01479d7-00f1-432b-a4f8-f697617b7cd1] Started GET "/assets/index-ff3040dea0c6e904b234781b5248abaa6e5f268ad0619e42a076d29dd19929f2.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.595119 #1]  INFO -- : [0582737c-f339-4021-bbec-df959e9a14c0] Started GET "/assets/mode-3e8ad2e4dde672d386ac904a858e155bac3674aeb3b72742f133986bdd9986ac.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.597073 #1]  INFO -- : [77a7b887-536e-47ea-992f-cb5bba265453] Started GET "/assets/show-6a4b772c0e7f57365d06fa3583411d14d5669b50ceec6afbc1549eadb903aa3d.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.593402 #1]  INFO -- : [32605faa-4e25-48f7-a775-7552c65de059] Started GET "/assets/controllers/index-2db729dddcc5b979110e98de4b6720f83f91a123172e87281d5a58410fc43806.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.607993 #1]  INFO -- : [f51bc38d-81d6-42c2-8bae-6c51265a2d90] Started GET "/assets/logo-862aac6355d39a80688b8b4d47fff187f50508f4d39b5b526c4a3910a7914fd2.png" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.609432 #1]  INFO -- : [c8a1061c-e01c-4851-9df8-eebe1446a05b] Started GET "/assets/bird-be1d96761380a4db40bc2a6518e41e091ac9baf600df124db0547543b9662ed4.png" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.608190 #1]  INFO -- : [77be0c79-9d4d-43d9-b2e4-af4a1372d00c] Started GET "/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.602128 #1]  INFO -- : [e53c0c07-e5c5-4dcc-b8d9-a012cbde136b] Started GET "/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.616052 #1]  INFO -- : [ba7681ab-d8ad-43d6-838d-b99c115676c0] Started GET "/assets/animal/6-b8618f7dc481d86518c1bcab9d366cf190abdedd532d21782990a00535c30ea9.png" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.818128 #1]  INFO -- : [7533cdb9-e948-4b4a-bd92-574817b40896] Started GET "/assets/background2-8a053d4292820b40d7bf45fe5bc9cbae35325d5b6978b207dd2cb5978b37905b.jpg" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.820941 #1]  INFO -- : [216617a5-16f7-4965-b445-1f60434a7c4c] Started GET "/assets/background-ec5e3f552f022fd2a831f7a1d118dc59df4c7ebb0ec33a2aa603f3a6bda4ef72.jpg" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.861560 #1]  INFO -- : [b019743f-c078-4404-9313-dce980955b36] Started GET "/assets/application-52b0b9cc354db2fbd0f8f5bc7a5b3ca13ccdb4c37621e587c08337f4fd8302e4.js" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.941809 #1]  INFO -- : [90d58300-203c-44ab-9250-e1996ae41460] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:02.944178 #1]  INFO -- : [c1fef84c-4eb9-4cf8-8070-becce0d480d6] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:37:02 +0900
+I, [2024-04-18T09:37:43.641157 #1]  INFO -- : [d6f8894c-f913-4ed6-b4b6-d4bc7e231399] Started GET "/" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.651010 #1]  INFO -- : [d6f8894c-f913-4ed6-b4b6-d4bc7e231399] Processing by StaticPagesController#top as HTML
+I, [2024-04-18T09:37:43.668012 #1]  INFO -- : [d6f8894c-f913-4ed6-b4b6-d4bc7e231399]   Rendered static_pages/top.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1346)
+I, [2024-04-18T09:37:43.681014 #1]  INFO -- : [d6f8894c-f913-4ed6-b4b6-d4bc7e231399]   Rendered layout layouts/application.html.erb (Duration: 24.1ms | Allocations: 3122)
+I, [2024-04-18T09:37:43.682915 #1]  INFO -- : [d6f8894c-f913-4ed6-b4b6-d4bc7e231399] Completed 200 OK in 30ms (Views: 27.9ms | ActiveRecord: 0.0ms | Allocations: 3328)
+I, [2024-04-18T09:37:43.715556 #1]  INFO -- : [95014d83-915a-4be9-93af-62e5b729d5de] Started GET "/assets/top-0bde369142801eb0f1502d4949d75bca52b6a3eab286a294d3f480ea8710ee94.css" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.726287 #1]  INFO -- : [43e5b96d-9034-4676-be85-d614e3462e8d] Started GET "/assets/application-52b0b9cc354db2fbd0f8f5bc7a5b3ca13ccdb4c37621e587c08337f4fd8302e4.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.728780 #1]  INFO -- : [ea3e3a42-a642-470e-a228-c311f887bca0] Started GET "/assets/bingo_ruret2-44f5f90740b5759f80c6aadaaabda2503a6991883749ff4eb83e61032ca9fb0f.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.734018 #1]  INFO -- : [c553a6d0-17ff-4a37-8fd8-e81c6153f530] Started GET "/assets/stimulus-loading-3576ce92b149ad5d6959438c6f291e2426c86df3b874c525b30faad51b0d96b3.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.735761 #1]  INFO -- : [21e9c931-c591-4b7b-95b0-65ca5422df92] Started GET "/assets/common-637911dc91b1a9d8293d2b0ebe65be1dad96521e05c3d66fb5d35814fbd4350b.css" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.736198 #1]  INFO -- : [88b000be-4e49-47e0-80ef-5eb9393c1616] Started GET "/assets/stimulus.min-dd364f16ec9504dfb72672295637a1c8838773b01c0b441bd41008124c407894.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.741578 #1]  INFO -- : [696c20d3-8aef-42da-a2e8-bd3f82eb7a5a] Started GET "/assets/index-ff3040dea0c6e904b234781b5248abaa6e5f268ad0619e42a076d29dd19929f2.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.746344 #1]  INFO -- : [ff7b665e-7695-462b-9cf1-5b05518ee4bd] Started GET "/assets/show-6a4b772c0e7f57365d06fa3583411d14d5669b50ceec6afbc1549eadb903aa3d.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.757395 #1]  INFO -- : [3be94a5b-7504-4ab2-862c-e668694ab4c3] Started GET "/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.757902 #1]  INFO -- : [675e3c74-caa6-4016-b8dd-ed495590ef7e] Started GET "/assets/mode-3e8ad2e4dde672d386ac904a858e155bac3674aeb3b72742f133986bdd9986ac.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.760924 #1]  INFO -- : [00440ced-f2bd-4d69-95eb-db20ecf4f889] Started GET "/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.760049 #1]  INFO -- : [6245065f-f3ec-40c9-850c-3f99b013a30b] Started GET "/assets/controllers/index-2db729dddcc5b979110e98de4b6720f83f91a123172e87281d5a58410fc43806.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.759737 #1]  INFO -- : [54793852-db08-41e3-8b56-015ba3ca7864] Started GET "/assets/logo-862aac6355d39a80688b8b4d47fff187f50508f4d39b5b526c4a3910a7914fd2.png" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.762550 #1]  INFO -- : [c062371d-ea46-49b6-b716-88e3fb87091a] Started GET "/assets/bird-be1d96761380a4db40bc2a6518e41e091ac9baf600df124db0547543b9662ed4.png" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.765843 #1]  INFO -- : [eea3f281-702c-4bf2-908d-52fb9cca870d] Started GET "/assets/animal/6-b8618f7dc481d86518c1bcab9d366cf190abdedd532d21782990a00535c30ea9.png" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.861173 #1]  INFO -- : [9b6c66cb-fda3-4d11-bf82-261ca01c8def] Started GET "/assets/background-ec5e3f552f022fd2a831f7a1d118dc59df4c7ebb0ec33a2aa603f3a6bda4ef72.jpg" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.865787 #1]  INFO -- : [62ff7973-9a21-4981-817d-eb8f4ca909f0] Started GET "/assets/turbo.min-918a6cf2f2be8ed9555c9a11eee69c7dc2f01770802815576efc931876b327fb.js" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.866526 #1]  INFO -- : [bde50c10-97fd-44a6-a116-52e6f21ce9ee] Started GET "/assets/background2-8a053d4292820b40d7bf45fe5bc9cbae35325d5b6978b207dd2cb5978b37905b.jpg" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.943293 #1]  INFO -- : [da8d3ca8-89c2-4d31-95e1-f3f2deafdd45] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:37:43.954771 #1]  INFO -- : [ad7f630b-1c46-4766-a149-6865522d9601] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:37:43 +0900
+I, [2024-04-18T09:40:17.174063 #1]  INFO -- : [87644918-e14c-4500-92a3-f791aba8195a] Started GET "/" for 172.22.0.1 at 2024-04-18 09:40:17 +0900
+I, [2024-04-18T09:40:17.207413 #1]  INFO -- : [87644918-e14c-4500-92a3-f791aba8195a] Processing by StaticPagesController#top as HTML
+I, [2024-04-18T09:40:17.247593 #1]  INFO -- : [87644918-e14c-4500-92a3-f791aba8195a]   Rendered static_pages/top.html.erb within layouts/application (Duration: 27.6ms | Allocations: 1343)
+I, [2024-04-18T09:40:17.350309 #1]  INFO -- : [87644918-e14c-4500-92a3-f791aba8195a]   Rendered layout layouts/application.html.erb (Duration: 131.8ms | Allocations: 3092)
+I, [2024-04-18T09:40:17.352949 #1]  INFO -- : [87644918-e14c-4500-92a3-f791aba8195a] Completed 200 OK in 144ms (Views: 139.7ms | ActiveRecord: 0.0ms | Allocations: 3298)
+I, [2024-04-18T09:40:18.056836 #1]  INFO -- : [be03debf-f16b-4768-a46a-c3edeefdef70] Started GET "/assets/top-0bde369142801eb0f1502d4949d75bca52b6a3eab286a294d3f480ea8710ee94.css" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.152768 #1]  INFO -- : [479613fa-356b-48ac-98c3-e86a10dc26a3] Started GET "/assets/common-637911dc91b1a9d8293d2b0ebe65be1dad96521e05c3d66fb5d35814fbd4350b.css" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.155360 #1]  INFO -- : [0abf46d1-fdb5-4369-a525-7ec6a7071087] Started GET "/assets/bingo_ruret2-44f5f90740b5759f80c6aadaaabda2503a6991883749ff4eb83e61032ca9fb0f.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.156928 #1]  INFO -- : [cba8019c-56dd-400e-b146-91a5614c7825] Started GET "/assets/application-52b0b9cc354db2fbd0f8f5bc7a5b3ca13ccdb4c37621e587c08337f4fd8302e4.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.153524 #1]  INFO -- : [9f692c26-dc9d-4efc-80da-eb2d564e2f53] Started GET "/assets/stimulus-loading-3576ce92b149ad5d6959438c6f291e2426c86df3b874c525b30faad51b0d96b3.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.174269 #1]  INFO -- : [9eb3b961-5b42-4b3e-8a32-47930b6f0c79] Started GET "/assets/turbo.min-918a6cf2f2be8ed9555c9a11eee69c7dc2f01770802815576efc931876b327fb.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.191885 #1]  INFO -- : [424f8be9-1f47-489f-bfe0-eca86b0a65b0] Started GET "/assets/mode-3e8ad2e4dde672d386ac904a858e155bac3674aeb3b72742f133986bdd9986ac.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.215198 #1]  INFO -- : [83632d14-6826-44d9-abfd-18cc59a1940c] Started GET "/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.215380 #1]  INFO -- : [0f2620b7-9a3e-4b81-b0c4-44b52bab121c] Started GET "/assets/show-6a4b772c0e7f57365d06fa3583411d14d5669b50ceec6afbc1549eadb903aa3d.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.215672 #1]  INFO -- : [e7353856-8077-4901-b1da-f17aa6493adc] Started GET "/assets/index-ff3040dea0c6e904b234781b5248abaa6e5f268ad0619e42a076d29dd19929f2.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.516660 #1]  INFO -- : [32e515cc-14fa-42ae-8c56-93ffb382cd77] Started GET "/assets/logo-862aac6355d39a80688b8b4d47fff187f50508f4d39b5b526c4a3910a7914fd2.png" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.534571 #1]  INFO -- : [8c6839a8-0eb5-45ce-86b8-a58235aefa5c] Started GET "/assets/bird-be1d96761380a4db40bc2a6518e41e091ac9baf600df124db0547543b9662ed4.png" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.499766 #1]  INFO -- : [4c09bf85-caf6-4b75-850c-82484a536a45] Started GET "/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.534878 #1]  INFO -- : [5134276d-5fef-4ffa-aae0-cc3fa1577847] Started GET "/assets/controllers/index-2db729dddcc5b979110e98de4b6720f83f91a123172e87281d5a58410fc43806.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.542952 #1]  INFO -- : [c6462721-0b12-4e90-ad1f-e6ba128c6945] Started GET "/assets/animal/6-b8618f7dc481d86518c1bcab9d366cf190abdedd532d21782990a00535c30ea9.png" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.773573 #1]  INFO -- : [4a252979-8edc-40b0-be92-d532e61aedb8] Started GET "/assets/background-ec5e3f552f022fd2a831f7a1d118dc59df4c7ebb0ec33a2aa603f3a6bda4ef72.jpg" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.781986 #1]  INFO -- : [06c94ed9-2507-4c87-9afc-5a95c62a092a] Started GET "/assets/background2-8a053d4292820b40d7bf45fe5bc9cbae35325d5b6978b207dd2cb5978b37905b.jpg" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:18.921476 #1]  INFO -- : [56a08925-c5f7-458b-bbae-2707ee03c581] Started GET "/assets/stimulus.min-dd364f16ec9504dfb72672295637a1c8838773b01c0b441bd41008124c407894.js" for 172.22.0.1 at 2024-04-18 09:40:18 +0900
+I, [2024-04-18T09:40:20.587185 #1]  INFO -- : [0475d51d-cd10-4cec-841f-692841723cea] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:40:20 +0900
+I, [2024-04-18T09:40:20.587521 #1]  INFO -- : [31ce5543-c564-401b-b023-ee40280b7601] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:40:20 +0900
+I, [2024-04-18T09:40:22.445055 #1]  INFO -- : [9d21ad07-34a9-4981-8ebd-f2df9f614586] Started GET "/bingo" for 172.22.0.1 at 2024-04-18 09:40:22 +0900
+I, [2024-04-18T09:40:22.447507 #1]  INFO -- : [9d21ad07-34a9-4981-8ebd-f2df9f614586] Processing by BingoController#play as HTML
+I, [2024-04-18T09:40:22.497278 #1]  INFO -- : [9d21ad07-34a9-4981-8ebd-f2df9f614586] Completed 500 Internal Server Error in 49ms (ActiveRecord: 5.7ms | Allocations: 539)
+F, [2024-04-18T09:40:22.497744 #1] FATAL -- : [9d21ad07-34a9-4981-8ebd-f2df9f614586]   
+[9d21ad07-34a9-4981-8ebd-f2df9f614586] ActiveRecord::StatementInvalid (Mysql2::Error: No database selected):
+[9d21ad07-34a9-4981-8ebd-f2df9f614586]   
+[9d21ad07-34a9-4981-8ebd-f2df9f614586] app/controllers/bingo_controller.rb:34:in `play'
+I, [2024-04-18T09:40:26.458061 #1]  INFO -- : [04f5eccd-555d-4b06-9718-f17b8313bb18] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:40:26 +0900
+I, [2024-04-18T09:40:26.461055 #1]  INFO -- : [e58a70be-cc17-4816-9d24-0a7c70db36b6] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:40:26 +0900
+I, [2024-04-18T09:40:26.466005 #1]  INFO -- : [dc9a651b-620b-4982-806f-ab8eb80b8068] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:40:26 +0900
+I, [2024-04-18T09:40:26.469268 #1]  INFO -- : [bcb6463d-6492-4989-859d-7a7eaeb952c2] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:40:26 +0900
+I, [2024-04-18T09:40:26.558905 #1]  INFO -- : [aa74b246-9639-4f76-87c5-7bc04698a07b] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:40:26 +0900
+I, [2024-04-18T09:40:26.561782 #1]  INFO -- : [1f333b27-34ab-4e5d-8772-8083bc27b37e] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:40:26 +0900
+I, [2024-04-18T09:45:20.448842 #1]  INFO -- : [e126765b-13bb-41f6-9eb9-211b0e600883] Started GET "/" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.457857 #1]  INFO -- : [e126765b-13bb-41f6-9eb9-211b0e600883] Processing by StaticPagesController#top as HTML
+I, [2024-04-18T09:45:20.472189 #1]  INFO -- : [e126765b-13bb-41f6-9eb9-211b0e600883]   Rendered static_pages/top.html.erb within layouts/application (Duration: 8.7ms | Allocations: 1353)
+I, [2024-04-18T09:45:20.481458 #1]  INFO -- : [e126765b-13bb-41f6-9eb9-211b0e600883]   Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 3114)
+I, [2024-04-18T09:45:20.482488 #1]  INFO -- : [e126765b-13bb-41f6-9eb9-211b0e600883] Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 0.0ms | Allocations: 3323)
+I, [2024-04-18T09:45:20.556954 #1]  INFO -- : [c483eaed-9e08-466c-b6df-18cba4625e2b] Started GET "/assets/top-0bde369142801eb0f1502d4949d75bca52b6a3eab286a294d3f480ea8710ee94.css" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.566504 #1]  INFO -- : [45eae92a-98cf-4a57-80e5-c93b0bde8be9] Started GET "/assets/common-637911dc91b1a9d8293d2b0ebe65be1dad96521e05c3d66fb5d35814fbd4350b.css" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.571232 #1]  INFO -- : [7f71fcc2-6fe6-4382-9a8a-865fcb40bef7] Started GET "/assets/bingo_ruret2-44f5f90740b5759f80c6aadaaabda2503a6991883749ff4eb83e61032ca9fb0f.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.568060 #1]  INFO -- : [9809cb94-2571-4b6c-9414-37162019edae] Started GET "/assets/stimulus.min-dd364f16ec9504dfb72672295637a1c8838773b01c0b441bd41008124c407894.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.571575 #1]  INFO -- : [85118127-37d4-422a-be4d-4cf082f7c317] Started GET "/assets/stimulus-loading-3576ce92b149ad5d6959438c6f291e2426c86df3b874c525b30faad51b0d96b3.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.567004 #1]  INFO -- : [5d112619-aa19-48b8-90c0-08d719e378c3] Started GET "/assets/application-52b0b9cc354db2fbd0f8f5bc7a5b3ca13ccdb4c37621e587c08337f4fd8302e4.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.580839 #1]  INFO -- : [aeef608d-a81e-4a9b-ae0e-34dc6a46f991] Started GET "/assets/index-ff3040dea0c6e904b234781b5248abaa6e5f268ad0619e42a076d29dd19929f2.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.582820 #1]  INFO -- : [d72fd16c-46f4-479f-8dd8-5be98b035460] Started GET "/assets/show-6a4b772c0e7f57365d06fa3583411d14d5669b50ceec6afbc1549eadb903aa3d.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.583275 #1]  INFO -- : [c67d4095-0bcf-4111-815d-ce39abfde6c6] Started GET "/assets/mode-3e8ad2e4dde672d386ac904a858e155bac3674aeb3b72742f133986bdd9986ac.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.586514 #1]  INFO -- : [a67f4094-bdf7-4184-b704-a7b9f9c3adcb] Started GET "/assets/controllers/application-368d98631bccbf2349e0d4f8269afb3fe9625118341966de054759d96ea86c7e.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.586720 #1]  INFO -- : [8e6d9f59-3f4c-4353-93a9-6119e378123f] Started GET "/assets/controllers/hello_controller-549135e8e7c683a538c3d6d517339ba470fcfb79d62f738a0a089ba41851a554.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.589231 #1]  INFO -- : [4dcdad98-4a64-4bd6-b830-e9c033d1c600] Started GET "/assets/controllers/index-2db729dddcc5b979110e98de4b6720f83f91a123172e87281d5a58410fc43806.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.593364 #1]  INFO -- : [379089db-bb7d-4b65-856d-aa0bb3f7b3c4] Started GET "/assets/bird-be1d96761380a4db40bc2a6518e41e091ac9baf600df124db0547543b9662ed4.png" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.594943 #1]  INFO -- : [d6fa9e78-3f3d-46d2-a0d6-930e99afe21c] Started GET "/assets/animal/6-b8618f7dc481d86518c1bcab9d366cf190abdedd532d21782990a00535c30ea9.png" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.593070 #1]  INFO -- : [8af3e083-749d-44e8-b492-119528587a29] Started GET "/assets/logo-862aac6355d39a80688b8b4d47fff187f50508f4d39b5b526c4a3910a7914fd2.png" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.794220 #1]  INFO -- : [b59ab0d6-2051-4d58-a828-a924457b95e5] Started GET "/assets/turbo.min-918a6cf2f2be8ed9555c9a11eee69c7dc2f01770802815576efc931876b327fb.js" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.803150 #1]  INFO -- : [cc7e69dc-3938-4bfc-b045-fa759f870a99] Started GET "/assets/background2-8a053d4292820b40d7bf45fe5bc9cbae35325d5b6978b207dd2cb5978b37905b.jpg" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.804477 #1]  INFO -- : [9d29759b-2679-4a5e-9bd9-b29071e7a5d2] Started GET "/assets/background-ec5e3f552f022fd2a831f7a1d118dc59df4c7ebb0ec33a2aa603f3a6bda4ef72.jpg" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.845840 #1]  INFO -- : [2b496e6a-f6d8-4046-bd87-5bab7b4580c1] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:20.848654 #1]  INFO -- : [6cb15d97-1a29-43be-b3b1-2ec61b2d2c81] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:45:20 +0900
+I, [2024-04-18T09:45:24.341311 #1]  INFO -- : [e108522c-278f-426a-a0c5-2e1418eade53] Started GET "/bingo" for 172.22.0.1 at 2024-04-18 09:45:24 +0900
+I, [2024-04-18T09:45:24.355983 #1]  INFO -- : [e108522c-278f-426a-a0c5-2e1418eade53] Processing by BingoController#play as HTML
+I, [2024-04-18T09:45:24.364792 #1]  INFO -- : [e108522c-278f-426a-a0c5-2e1418eade53] Completed 500 Internal Server Error in 8ms (ActiveRecord: 3.5ms | Allocations: 389)
+F, [2024-04-18T09:45:24.366693 #1] FATAL -- : [e108522c-278f-426a-a0c5-2e1418eade53]   
+[e108522c-278f-426a-a0c5-2e1418eade53] ActiveRecord::StatementInvalid (Mysql2::Error: No database selected):
+[e108522c-278f-426a-a0c5-2e1418eade53]   
+[e108522c-278f-426a-a0c5-2e1418eade53] app/controllers/bingo_controller.rb:34:in `play'
+I, [2024-04-18T09:45:27.069453 #1]  INFO -- : [52f47ca4-0a02-40fd-afff-47ec795f6bf7] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:45:27 +0900
+I, [2024-04-18T09:45:27.091021 #1]  INFO -- : [bfc14696-4c24-4692-95ec-4f1c0b744a22] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:45:27 +0900
+I, [2024-04-18T09:45:27.091865 #1]  INFO -- : [2364f4e0-7602-4d62-bb15-d8e889fb69cf] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:45:27 +0900
+I, [2024-04-18T09:45:27.107433 #1]  INFO -- : [bcc1b005-0e86-46cb-ac09-aa25e602f855] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:45:27 +0900
+I, [2024-04-18T09:45:27.133763 #1]  INFO -- : [5e6f902b-96d4-45de-b34a-8280efbcd5ef] Started GET "/assets/stimulus.min.js-2cc63625fa177963b45da974806e7aee846cbf1d4930815733d0fdf3fb232325.map" for 172.22.0.1 at 2024-04-18 09:45:27 +0900
+I, [2024-04-18T09:45:27.133927 #1]  INFO -- : [a2f0b478-fa67-432f-8886-673a6ce39dc3] Started GET "/assets/turbo.min.js-16b5fa18e8e95a86fc9f56ced2c8a9c83a99b73834da35ba1b2ff5dab550d7fa.map" for 172.22.0.1 at 2024-04-18 09:45:27 +0900

@@ -13,7 +13,7 @@ services:
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3004 -b '0.0.0.0'"
-    container_name: animalbingo2_container
+    container_name: animalbingo3_container
     tty: true
     stdin_open: true
     volumes:
